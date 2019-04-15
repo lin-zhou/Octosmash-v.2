@@ -33,21 +33,24 @@ $ npm install @types/pixi.js
 ## Running
 I'm not sure if other browsers have this issue, but Google Chrome doesn't allow for running local files (such as images for sprites).
 
-####Solution:
+### Solution:
 
-If you have Python 3, run this command in your project directory:
+#### Python 3
 ```sh
 $ python -m http.server
 ```
 Then, you can load the page on: http://localhost:8000.
 
-For other versions of Python, the Internet says you should use:
+#### Other Python Versions
+I haven't tried this one, but it seems to have worked for other people.
+
 ```sh
 $ python -m SimpleHTTPServer
 ```
-But I haven't tried this one.
 
-You can also use node's package manager:
+# Node Package Manager
+When I tried this approach, I had inconsistent issues with sprite scaling in the browser. I didn't see any other comments with this issue, but the Python methods are probably easier anyway.
+
 ```sh
 $ npm install -g http-server
 ```
@@ -55,4 +58,3 @@ In the project directory, run:
 ```sh
 $ http-server
 ```
-However, when I tried this method, sometimes the sizes of the sprites wouldn't change in the browser even after I changed the scale in the code.
