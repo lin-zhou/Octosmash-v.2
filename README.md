@@ -48,7 +48,7 @@ I haven't tried this one, but it seems to have worked for other people.
 $ python -m SimpleHTTPServer
 ```
 
-# Node Package Manager
+#### Node Package Manager
 When I tried this approach, I had inconsistent issues with sprite scaling in the browser. I didn't see any other comments with this issue, but the Python methods are probably easier anyway.
 
 ```sh
