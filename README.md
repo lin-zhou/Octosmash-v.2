@@ -34,6 +34,7 @@ $ npm install @types/pixi.js
 I'm not sure if other browsers have this issue, but Google Chrome doesn't allow for running local files (such as images for sprites).
 
 ####Solution:
+
 If you have Python 3, run this command in your project directory:
 ```sh
 $ python -m http.server
