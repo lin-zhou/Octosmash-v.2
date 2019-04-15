@@ -31,7 +31,7 @@ $ npm install @types/pixi.js
 ```
 
 ## Running
-I'm not sure if other browsers have this issue, but Google Chrome doesn't allow for running local files (such as images for sprites).
+I'm not sure if other browsers also have this issue, but if you're running the game in Google Chrome, Chrome doesn't allow running local files (such as images for sprites).
 
 ### Solution:
 
