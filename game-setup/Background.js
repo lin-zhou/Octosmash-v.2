@@ -8,39 +8,41 @@ const SceneEnum = Object.freeze({
 
 class Background {
 
-    constructor(scene) {
+    constructor() {
 
-        switch(scene) {
-            case SceneEnum.START:
-                var sprite = new PIXI.Sprite.from("images/backgrounds/Start_Screen.png");
-                break;
-            case SceneEnum.HOWTO:
-                var sprite = new PIXI.Sprite.from("images/backgrounds/How_To_Background.png");
-                sprite.scale.x = 0.655;
-                sprite.scale.y = 0.655;
-                break;
-            case SceneEnum.CHARASELECT:
-                var sprite = new PIXI.Sprite.from("images/backgrounds/Character_Select.png");
-                break;
-            case SceneEnum.BATTLEFIELD:
-                var sprite = new PIXI.Sprite.from("images/backgrounds/Final_Destination.png");
-                break;
-            case SceneEnum.RECAP:
-                throw "Currently not supported";
-        }
+        var sprite;
 
         this.getSprite = function() {
             return sprite;
         }
 
-        this.setSprite = function(sprite) {
-            this.sprite = sprite;
+        this.setSprite = function(scene) {
+            switch(scene) {
+                case SceneEnum.START:
+                    sprite = new PIXI.Sprite.from("images/backgrounds/Start_Screen.png");
+                    break;
+                case SceneEnum.HOWTO:
+                    sprite = new PIXI.Sprite.from("images/backgrounds/How_To_Background.png");
+                    sprite.scale.x = 0.655;
+                    sprite.scale.y = 0.655;
+                    break;
+                case SceneEnum.CHARASELECT:
+                    sprite = new PIXI.Sprite.from("images/backgrounds/Character_Select.png");
+                    break;
+                case SceneEnum.BATTLEFIELD:
+                    sprite = new PIXI.Sprite.from("images/backgrounds/Final_Destination.png");
+                    break;
+                case SceneEnum.RECAP:
+                    throw "Currently not supported";
+            }
+    
         }
 
     }
 
     update = function(app) {
         app.stage.removeChild(sprite);
+        setSprite(newSprite);
     }
     
 }
