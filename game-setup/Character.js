@@ -53,6 +53,7 @@ class Character {
         this.getSprite = function() {
             return sprite;
         }
+
     }
 
 }
