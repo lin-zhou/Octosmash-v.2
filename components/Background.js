@@ -38,11 +38,11 @@ class Background {
     
         }
 
-    }
+        this.update = function(app) {
+            app.stage.removeChild(sprite);
+            setSprite(newSprite);
+        }
 
-    update = function(app) {
-        app.stage.removeChild(sprite);
-        setSprite(newSprite);
     }
     
 }
