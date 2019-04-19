@@ -20,6 +20,8 @@ class Background {
             switch(scene) {
                 case SceneEnum.START:
                     sprite = new PIXI.Sprite.from("images/backgrounds/Start_Screen.png");
+                    sprite.scale.x = 0.453;
+                    sprite.scale.y = 0.453;
                     break;
                 case SceneEnum.HOWTO:
                     sprite = new PIXI.Sprite.from("images/backgrounds/How_To_Background.png");

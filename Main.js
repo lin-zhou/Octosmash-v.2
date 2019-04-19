@@ -1,4 +1,5 @@
-const game = new Game(SceneEnum.START);
+const game = new Game();
+const app = game.getApp();
 
 // Testing characters sprites.
 var chara = new Character("hannit");

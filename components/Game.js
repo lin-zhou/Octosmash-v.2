@@ -1,14 +1,20 @@
 class Game {
 
-    constructor(background) {
+    constructor() {
 
         const app = new PIXI.Application(1024 * .85, 576 * .85);
         document.body.appendChild(app.view);
 
-        var background = background;
+        var background = new Background();
         var players;
 
+        background.setSprite(SceneEnum.START);
+
         app.stage.addChild(background.getSprite());
+
+        this.getApp = function() {
+            return app;
+        }
 
         this.setBackground = function(scene) {
             app.stage.removeChild(background.getSprite());
