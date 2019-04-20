@@ -9,8 +9,9 @@ class Game {
         var players;
 
         background.setSprite(SceneEnum.START);
-
         app.stage.addChild(background.getSprite());
+
+        const start = new Start(app);
 
         this.getApp = function() {
             return app;
@@ -32,6 +33,22 @@ class Game {
 
         this.getNumPlayers = function() {
             return players.length;
+        }
+
+        this.handleScene = function(scene) {
+            this.setBackground(scene);
+            switch(scene) {
+                case SceneEnum.START:
+                    break;
+                case SceneEnum.HOWTO:
+                    break;
+                case SceneEnum.CHARASELECT:
+                    break;
+                case SceneEnum.BATTLEFIELD:
+                    break;
+                case SceneEnum.RECAP:
+                    throw "Currently not supported";
+            }
         }
 
     }
