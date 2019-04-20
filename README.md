@@ -17,7 +17,7 @@ The repository for Octosmash 110 can be found [here](https://github.com/lin-zhou
 ## Changes in Version 2
 ### Fundamentals
 * Change of Programming Language: While the original Octosmash 110 was written in TypeScript, version 2 uses JavaScript.
-* Octosmash 110 was largely focused on functional programming, whereas version 2 primarily uses object-oriented programming concepts.
+* Octosmash 110 was largely focused on functional programming, whereas version 2 uses more object-oriented programming concepts.
 
 ### New Features
 This section will be updated as new features are implemented.
@@ -35,26 +35,36 @@ I'm not sure if other browsers also have this issue, but if you're running the g
 
 ### Solution:
 
-#### Python 3
-```sh
-$ python -m http.server
-```
-Then, you can load the page on: http://localhost:8000.
-
-#### Other Python Versions
-I haven't tried this one, but it seems to have worked for other people.
-
-```sh
-$ python -m SimpleHTTPServer
-```
-
 #### Node Package Manager
-When I tried this approach, I had inconsistent issues with sprite scaling in the browser. I didn't see any other comments with this issue, but the Python methods are probably easier anyway.
-
 ```sh
 $ npm install -g http-server
 ```
 In the project directory, run:
 ```sh
 $ http-server
+```
+
+Load the page on: http://localhost:8080.
+
+I had problems with localhost serving old versions of the game a couple of times while I was working on it, probably because of issues with the cache. There are a couple of ways to get around it, but I found running this to be the easiest:
+
+```sh
+$ http-server -c-1
+```
+
+#### Python 3
+If you have Python 3 installed, you can use this:
+
+```sh
+$ python -m http.server
+```
+You can load the page on: http://localhost:8000.
+
+I also had cache issues running it like this, but there are some ways to fix that, which are easy to find online if you prefer to use Python to run the game.
+
+#### Other Python Versions
+I haven't tried this one, but it seems to have worked for other people.
+
+```sh
+$ python -m SimpleHTTPServer
 ```
