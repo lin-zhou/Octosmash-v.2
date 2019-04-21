@@ -61,9 +61,8 @@ class CharacterSelect{
     
         }
     
-        this.changeScene = function(scene) {
-            // Remove all components added here.
-            game.background.setSprite(scene);
+        this.deleteScene = function() {
+            
         }
 
     }

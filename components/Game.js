@@ -11,7 +11,7 @@ class Game {
         background.setSprite(SceneEnum.START);
         app.stage.addChild(background.getSprite());
 
-        const start = new Start(app);
+        const start = new Start(app, this);
 
         this.getApp = function() {
             return app;
@@ -35,10 +35,11 @@ class Game {
             return players.length;
         }
 
-        this.handleScene = function(scene) {
-            this.setBackground(scene);
-            switch(scene) {
+        this.handleScene = function(curScene, nextScene) {
+            app.stage.removeChild(background.getSprite());
+            switch(curScene) {
                 case SceneEnum.START:
+                    start.deleteScene();
                     break;
                 case SceneEnum.HOWTO:
                     break;
@@ -49,6 +50,7 @@ class Game {
                 case SceneEnum.RECAP:
                     throw "Currently not supported";
             }
+            this.setBackground(nextScene);
         }
 
     }

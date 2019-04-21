@@ -1,6 +1,6 @@
 class Start {
 
-    constructor(app) {
+    constructor(app, game) {
 
         var startButton = new PIXI.Sprite(startTexture);
 
@@ -28,6 +28,9 @@ class Start {
             startButton.scale.y = 0.48;
             startButton.x = 460;
             startButton.y = 388;
+
+            game.handleScene(SceneEnum.START, SceneEnum.HOWTO);
+
         }
         
         function onButtonUp() {
@@ -71,6 +74,12 @@ class Start {
             startButton.x = 455;
             startButton.y = 385;
         }        
+
+        this.deleteScene = function() {
+            startButton.interactive = false;
+            startButton.buttonMode = false;
+            app.stage.removeChild(startButton);
+        }
 
     }
 
