@@ -30,6 +30,8 @@ class Background {
                     break;
                 case SceneEnum.CHARASELECT:
                     sprite = new PIXI.Sprite.from("images/backgrounds/Character_Select.png");
+                    sprite.scale.x = 0.45;
+                    sprite.scale.y = 0.45;
                     break;
                 case SceneEnum.BATTLEFIELD:
                     sprite = new PIXI.Sprite.from("images/backgrounds/Final_Destination.png");

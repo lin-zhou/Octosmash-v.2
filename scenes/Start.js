@@ -31,6 +31,8 @@ class Start {
 
             game.handleScene(SceneEnum.START, SceneEnum.HOWTO);
 
+            const howTo = new HowTo(app, game);
+
         }
         
         function onButtonUp() {
