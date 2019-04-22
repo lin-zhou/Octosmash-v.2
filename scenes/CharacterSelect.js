@@ -13,6 +13,8 @@ const GraphicTexts = Object.freeze({
     RESELECT: {"text":"RESELECT", "x":59, "y":424}
 })
 
+// TO DO: Make graphics for buttons.
+
 // const nextBox = new PIXI.Graphics();
 // nextBox.beginFill(0x6f6f6f, 0.6);
 // nextBox.drawRect(0, 0, 120, 45);
@@ -49,9 +51,9 @@ let blockBox = new PIXI.Graphics();
 
 class CharacterSelect{
 
-    constructor(game) {
-        
-        game.background.setSprite(SceneEnum.CHARASELECT);
+    constructor(game, app) {
+
+        console.log("Character Select Screen");
 
         this.select = function() {
 

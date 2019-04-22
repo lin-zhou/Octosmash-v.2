@@ -1,13 +1,18 @@
 class HowTo {
 
-    constructor(app, game) {
+    constructor(game, app) {
 
+        console.log("How to Play Screen");
+
+        var selecting = false;
 
         window.addEventListener("keydown", (e) => {
-            console.log("To character selection screen.");
             const START = 32;
-            if (e.keyCode === START) {
+            if (!selecting && e.keyCode === START) {
+                selecting = true;
                 game.handleScene(SceneEnum.HOWTO, SceneEnum.CHARASELECT);
+                const charaSelect = new CharacterSelect(game, app);
+                // Note to self for future: Remove event listener
             }
         }, false);
 

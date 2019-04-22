@@ -11,7 +11,7 @@ class Game {
         background.setSprite(SceneEnum.START);
         app.stage.addChild(background.getSprite());
 
-        const start = new Start(app, this);
+        const start = new Start(this, app);
 
         this.getApp = function() {
             return app;
@@ -36,12 +36,14 @@ class Game {
         }
 
         this.handleScene = function(curScene, nextScene) {
+            console.log("Changing scenes from " + curScene + " to " + nextScene);
             app.stage.removeChild(background.getSprite());
             switch(curScene) {
                 case SceneEnum.START:
                     start.deleteScene();
                     break;
                 case SceneEnum.HOWTO:
+                    // Nothing additional to get rid of.
                     break;
                 case SceneEnum.CHARASELECT:
                     break;

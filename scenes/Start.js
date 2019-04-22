@@ -1,6 +1,8 @@
 class Start {
 
-    constructor(app, game) {
+    constructor(game, app) {
+
+        console.log("Start Screen");
 
         var startButton = new PIXI.Sprite(startTexture);
 
@@ -31,7 +33,7 @@ class Start {
 
             game.handleScene(SceneEnum.START, SceneEnum.HOWTO);
 
-            const howTo = new HowTo(app, game);
+            const howTo = new HowTo(game, app);
 
         }
         
