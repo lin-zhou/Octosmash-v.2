@@ -1,19 +1,5 @@
 // All character name y's are 105.
 // All box y's are 125.
-const GraphicTexts = Object.freeze({
-    ALFYN_TEXT: {"text":"ALFYN", "x":555, "boxX":536},
-    CYRUS_TEXT: {"text":"CYRUS", "x":168, "boxX":148},
-    HANNIT_TEXT: {"text":"H'ANNIT", "x":743, "boxX":731},
-    OLBERIC_TEXT: {"text":"OLBERIC", "x":354, "boxX":342},
-    OPHELIA_TEXT: {"text":"OPHELIA", "x":65, "boxX":50},
-    PRIMROSE_TEXT: {"text":"PRIMROSE", "x":446, "boxX":439},
-    THERION_TEXT: {"text":"THERION", "x":646, "boxX": 633},
-    TRESSA_TEXT: {"text":"TRESSA", "x":263, "boxX":245},
-    NEXT: {"text":"NEXT", "x":712, "y":421},
-    RESELECT: {"text":"RESELECT", "x":59, "y":424}
-})
-
-// TO DO: Make graphics for buttons.
 
 // const nextBox = new PIXI.Graphics();
 // nextBox.beginFill(0x6f6f6f, 0.6);
@@ -54,6 +40,10 @@ class CharacterSelect{
     constructor(game, app) {
 
         console.log("Character Select Screen");
+
+        for (var i = 0; i < charNamesArr.length; i++) {
+            app.stage.addChild(charNamesArr[i].pixiText());
+        }
 
         this.select = function() {
 
