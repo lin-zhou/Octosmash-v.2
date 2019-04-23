@@ -28,4 +28,13 @@ const alfynName = new GraphicText("ALFYN", 553, 105, nameStyle);
 const therionName = new GraphicText("THERION", 646, 105, nameStyle);
 const hannitName = new GraphicText("H'ANNIT", 743, 105, nameStyle);
 
-const charNamesArr = [opheliaName, cyrusName, tressaName, olbericName, primroseName, alfynName, therionName, hannitName];
+const charNamesArr = [
+    opheliaName.pixiText(),
+    cyrusName.pixiText(),
+    tressaName.pixiText(),
+    olbericName.pixiText(),
+    primroseName.pixiText(),
+    alfynName.pixiText(),
+    therionName.pixiText(),
+    hannitName.pixiText()
+];
