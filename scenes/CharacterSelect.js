@@ -193,7 +193,9 @@ class CharacterSelect{
             if (this.isdown) {
                 return;
             }
-            this.alpha = 0.2;
+            if (this.alpha != 0.6) {
+                this.alpha = 0.2;
+            }
         }
         
         function buttonOut() {
