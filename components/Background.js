@@ -1,9 +1,9 @@
 const SceneEnum = Object.freeze({
-    START: "start",
-    HOWTO: "how to",
-    CHARASELECT: "character select",
-    BATTLEFIELD: "battlefield",
-    RECAP: "recap"
+    START: "Start",
+    HOWTO: "How To",
+    CHARASELECT: "Character Select",
+    BATTLEFIELD: "Battlefield",
+    RECAP: "Recap"
 })
 
 class Background {

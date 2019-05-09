@@ -11,7 +11,7 @@ class HowTo {
             if (!selecting && e.keyCode === START) {
                 selecting = true;
                 game.handleScene(SceneEnum.HOWTO, SceneEnum.CHARASELECT);
-                const charaSelect = new CharacterSelect(game, app);
+                const charaSelect = new CharacterSelect(game, app, 1);
                 // Note to self for future: Remove event listener
             }
         }, false);

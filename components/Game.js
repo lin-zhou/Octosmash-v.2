@@ -31,6 +31,10 @@ class Game {
             return players;
         }
 
+        this.setPlayers = function(players) {
+            this.players = players;
+        }
+
         this.getNumPlayers = function() {
             return players.length;
         }

@@ -2,15 +2,23 @@
 // choose1.x = 270;
 // choose1.y = 430;
 
+// Temporary array of players before choosing number of players is supported
+
 class CharacterSelect{
-    
 
-    constructor(game, app) {
+    constructor(game, app, playerNum) {
 
-        console.log("Character Select Screen");
+        console.log("Player " + playerNum + " Character Select Screen");
 
         var nextButton = new PIXI.Sprite(nextTexture);
         var selected = false;
+        var playerNum = playerNum;
+        var playerSelecting;
+
+        switch (playerNum) {
+            case 1:
+            case 2:
+        }
 
         var blockBoxOphelia = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxOphelia.scale.x = 0.405;
@@ -251,15 +259,19 @@ class CharacterSelect{
             app.stage.addChild(charNamesArr[i]);
         }
 
-        this.select = function() {
+        this.createPlayer = function() {
+            // Currently unsupported
+        }
+        
+        this.select = function(character) {
 
         }
     
-        this.unselect = function() {
+        this.unselect = function(character) {
     
         }
     
-        this.deleteScene = function() {
+        this.deleteScene = function(character) {
             
             for (var i = 0; i < charNamesArr.length; i++) {
                 app.stage.removeChild(charNamesArr[i]);
