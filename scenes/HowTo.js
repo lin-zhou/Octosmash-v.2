@@ -1,5 +1,3 @@
-var charaSelect;
-
 class HowTo {
 
     constructor(game, app) {

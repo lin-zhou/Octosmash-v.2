@@ -16,6 +16,11 @@ class CharacterSelect{
         var playerNum = playerNum;
         var playerSelecting = players[playerNum - 1];
 
+        var chooseText = new PIXI.Text("Player " + playerNum + ": Choose Your Character", selectStyle);
+        chooseText.x = 270;
+        chooseText.y = 430;
+        app.stage.addChild(chooseText);
+
         var blockBoxOphelia = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxOphelia.scale.x = 0.405;
         blockBoxOphelia.scale.y = 1.231;
@@ -261,6 +266,12 @@ class CharacterSelect{
                 if (playerNum < players.length) {
                     playerNum++;
                     playerSelecting = players[playerNum - 1];
+
+                    app.stage.removeChild(chooseText);
+                    chooseText = new PIXI.Text("Player " + playerNum + ": Choose Your Character", selectStyle);
+                    chooseText.x = 270;
+                    chooseText.y = 430;
+                    app.stage.addChild(chooseText);
 
                     console.log("Player " + playerNum + " Character Select Screen");
                     for (var i = 0; i < blockBoxArray.length; i++) {

@@ -11,7 +11,7 @@ class Game {
         background.setSprite(SceneEnum.START);
         app.stage.addChild(background.getSprite());
 
-        const start = new Start(this, app);
+        start = new Start(this, app);
 
         this.getApp = function() {
             return app;
