@@ -15,6 +15,7 @@ Here are some things I should definitely do:
 * Multiple lives + respawning (and being able to choose number of stocks to play)
 
  ## Optional, somewhat likely to implement
+* Different movement speeds and damage amount for different characters
 * Allow players to map their own controls
 * Different backgrounds for main game
 * Other items (projectiles)
