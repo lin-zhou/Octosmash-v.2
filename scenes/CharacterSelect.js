@@ -208,7 +208,7 @@ class CharacterSelect{
             console.log("Player " + playerNum + " selected " + playerSelecting.getCharacter().getName());
 
             selected = true;
-            for (let i = 0; i < blockBoxArray.length; i++) {
+            for (var i = 0; i < blockBoxArray.length; i++) {
                 if (blockBoxArray[i] != this) {
                     blockBoxArray[i].alpha = 0;
                 }
@@ -261,19 +261,22 @@ class CharacterSelect{
                 if (playerNum < players.length) {
                     playerNum++;
                     playerSelecting = players[playerNum - 1];
+
+                    console.log("Player " + playerNum + " Character Select Screen");
+                    for (var i = 0; i < blockBoxArray.length; i++) {
+                        blockBoxArray[i].alpha = 0;
+                    }
+                    this.texture = nextTexture;
+                    nextButton.scale.x = 0.3;
+                    nextButton.scale.y = 0.3;
+                    nextButton.x = 688;
+                    nextButton.y = 420;
+            
+                    nextButton.interactive = false;
+                    nextButton.buttonMode = false
+                } else {
+                    game.handleScene(SceneEnum.CHARASELECT, SceneEnum.BATTLEFIELD);
                 }
-                console.log("Player " + playerNum + " Character Select Screen");
-                for (let i = 0; i < blockBoxArray.length; i++) {
-                    blockBoxArray[i].alpha = 0;
-                }
-                this.texture = nextTexture;
-                nextButton.scale.x = 0.3;
-                nextButton.scale.y = 0.3;
-                nextButton.x = 688;
-                nextButton.y = 420;
-        
-                nextButton.interactive = false;
-                nextButton.buttonMode = false
             }
             // Code here that leads to the main game
         }
@@ -327,11 +330,17 @@ class CharacterSelect{
             // Currently unsupported
         }
     
-        this.deleteScene = function(character) {
+        this.deleteScene = function() {
             
             for (var i = 0; i < charNamesArr.length; i++) {
                 app.stage.removeChild(charNamesArr[i]);
             }
+
+            for (var i = 0; i < blockBoxArray.length; i++) {
+                app.stage.removeChild(blockBoxArray[i]);
+            }
+
+            app.stage.removeChild(nextButton);
 
         }
         

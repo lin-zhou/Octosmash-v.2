@@ -34,7 +34,9 @@ class Background {
                     sprite.scale.y = 0.452;
                     break;
                 case SceneEnum.BATTLEFIELD:
-                    sprite = new PIXI.Sprite.from("images/backgrounds/Final_Destination.png");
+                    sprite = new PIXI.Sprite.from("images/backgrounds/Final_Destination_Stage.png");
+                    sprite.scale.x = 0.85;
+                    sprite.scale.y = 0.85;
                     break;
                 case SceneEnum.RECAP:
                     throw "Currently not supported";

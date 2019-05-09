@@ -50,6 +50,7 @@ class Game {
                     // Nothing additional to get rid of.
                     break;
                 case SceneEnum.CHARASELECT:
+                    charaSelect.deleteScene();
                     break;
                 case SceneEnum.BATTLEFIELD:
                     break;
