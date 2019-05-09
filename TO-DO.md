@@ -29,3 +29,4 @@ Just because I want the game to look nice:
 ## Cool, but probably won't get to
 Either I don't have an idea of how to implement it, or I don't really have the resources to do it (ex. art):
 * Melee attacks (would require some animations, probably)
+* Ability to play against CPU opponents

@@ -74,6 +74,16 @@ class Character {
             xMod = newXMod;
         }
 
+        this.turnLeft = function() {
+            sprite.scale.x *= -1;
+            sprite.x -= 65;
+        }
+
+        this.turnRight = function() {
+            sprite.scale.x *= -1;
+            sprite.x += 65;
+        }
+
     }
 
 }

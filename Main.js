@@ -1,2 +1,3 @@
 const game = new Game();
-const app = game.getApp();
+
+// Note to self: Utilize static methods
