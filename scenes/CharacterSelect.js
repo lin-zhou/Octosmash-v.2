@@ -287,9 +287,9 @@ class CharacterSelect{
                     nextButton.buttonMode = false
                 } else {
                     game.handleScene(SceneEnum.CHARASELECT, SceneEnum.BATTLEFIELD);
+                    mainGame = new MainGame(game, app, players);
                 }
             }
-            // Code here that leads to the main game
         }
         
         function onButtonUp() {

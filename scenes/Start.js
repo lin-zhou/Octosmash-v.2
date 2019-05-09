@@ -33,7 +33,7 @@ class Start {
 
             game.handleScene(SceneEnum.START, SceneEnum.HOWTO);
 
-            const howTo = new HowTo(game, app);
+            howTo = new HowTo(game, app);
 
         }
         

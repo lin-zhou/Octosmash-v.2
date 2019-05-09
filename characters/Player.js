@@ -32,14 +32,18 @@ class Player {
         this.updateCharacterDetails = function() {
             switch (number) {
                 case 1:
-                    startX = 210 + character.getXMod();
-                    if (character.getSprite().x >= 0) {
-                        character.getSprite().x *= -1;
+                    startX = 206 + character.getXMod();
+                    if (character.getSprite().scale.x >= 0) {
+                        character.getSprite().scale.x *= -1;
                     }
+                    character.getSprite().x = startX;
+                    character.getSprite().y = startY;
                     break;
                 case 2:
                     character.setXMod(-(character.getXMod()));
                     startX = 655 + character.getXMod();
+                    character.getSprite().x = startX;
+                    character.getSprite().y = startY;
                     break;
                 }
         }

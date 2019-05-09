@@ -1,10 +1,15 @@
 class MainGame {
 
-    constructor(scene, players) {
+    constructor(game, app, players) {
 
-        var scene = scene;
+        // Theoreticlaly, this scene variable could be used to choose different backgrounds
+        // var scene = scene;
+
         var players = players;
-        // Players will be an array created on the character select screen
+
+        for (var i = 0; i < players.length; i++) {
+            app.stage.addChild(players[i].getCharacter().getSprite());
+        }
 
     }
 
