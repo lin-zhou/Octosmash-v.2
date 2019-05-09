@@ -38,7 +38,7 @@ class Player {
                     }
                     break;
                 case 2:
-                    character.setXMod(character.getXMod() *= -1);
+                    character.setXMod(-(character.getXMod()));
                     startX = 655 + character.getXMod();
                     break;
                 }

@@ -71,7 +71,7 @@ class Character {
         }
         
         this.setXMod = function(newXMod) {
-            this.xMod = newXMod;
+            xMod = newXMod;
         }
 
     }
