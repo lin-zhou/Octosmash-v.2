@@ -1,10 +1,10 @@
 const CharaEnum = Object.freeze({
-    ALFYN: new Character("alfyn"),
-    CYRUS: new Character("cyrus"),
-    HANNIT: new Character("hannit"),
-    OLBERIC: new Character("olberic"),
-    OPHELIA: new Character("ophelia"),
-    PRIMROSE: new Character("primrose"),
-    THERION: new Character("therion"),
-    TRESSA: new Character("tressa")
+    ALFYN: "Alfyn",
+    CYRUS: "Cyrus",
+    HANNIT: "H'annit",
+    OLBERIC: "Olberic",
+    OPHELIA: "Ophelia",
+    PRIMROSE: "Primrose",
+    THERION: "Therion",
+    TRESSA: "Tressa"
 })

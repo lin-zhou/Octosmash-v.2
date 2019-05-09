@@ -4,80 +4,74 @@ class Character {
 
         var sprite;
         var xMod;
-        var charaName;
+        var charaName = charaName;
 
         switch (charaName) {
-            case "alfyn":
+            case CharaEnum.ALFYN:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Alfyn_Sprite.png");
                 sprite.scale.x = .55;
                 sprite.scale.y = .55;
                 xMod = 2;
-                charaName = "Alfyn";
                 break;
-            case "cyrus":
+            case CharaEnum.CYRUS:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Cyrus_Sprite.png");
                 sprite.scale.x = .55;
                 sprite.scale.y = .55;
                 xMod = 10;
-                charaName = "Cyrus";
                 break;
-            case "hannit":
+            case CharaEnum.HANNIT:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Hannit_Sprite.png");
                 sprite.scale.x = .5;
                 sprite.scale.y = .5;
                 xMod = 5;
-                charaName = "H'annit";
                 break;
-            case "olberic":
+            case CharaEnum.OLBERIC:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Olberic_Sprite.png");
                 sprite.scale.x = .54;
                 sprite.scale.y = .54;
                 xMod = 10;
-                charaName = "Olberic";
                 break;
-            case "ophelia":
+            case CharaEnum.OPHELIA:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Ophelia_Sprite.png");
                 sprite.scale.x = .53;
                 sprite.scale.y = .53;
                 xMod = 0;
-                charaName = "Ophelia";
                 break;
-            case "primrose":
+            case CharaEnum.PRIMROSE:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Primrose_Sprite.png");
                 sprite.scale.x = .54;
                 sprite.scale.y = .54;
                 xMod = 0;
-                charaName = "Primrose";
                 break;
-            case "therion":
+            case CharaEnum.THERION:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Therion_Sprite.png");
                 sprite.scale.x = .58;
                 sprite.scale.y = .58;
                 xMod = 7;
-                charaName = "Therion";
                 break;
-            case "tressa":
+            case CharaEnum.TRESSA:
                 sprite = new PIXI.Sprite.from("images/character-sprites/Tressa_Sprite.png");
                 sprite.scale.x = .54;
                 sprite.scale.y = .54;
                 xMod = 0;
-                charaName = "Tressa";
                 break;
     
         }
 
         this.getName = function() {
-            console.log(charName);
-            return charName;
+            return charaName;
         }
+
         this.getSprite = function() {
             return sprite;
         }
+
         this.getXMod = function() {
             return xMod;
         }
-        this.setXMod = function(xMod) {
-            this.xMod = xMod;
+        
+        this.setXMod = function(newXMod) {
+            this.xMod = newXMod;
         }
 
     }

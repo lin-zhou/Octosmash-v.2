@@ -3,6 +3,7 @@
 // choose1.y = 430;
 
 // Temporary array of players before choosing number of players is supported
+const players = [new Player(1), new Player(2)];
 
 class CharacterSelect{
 
@@ -13,12 +14,7 @@ class CharacterSelect{
         var nextButton = new PIXI.Sprite(nextTexture);
         var selected = false;
         var playerNum = playerNum;
-        var playerSelecting;
-
-        switch (playerNum) {
-            case 1:
-            case 2:
-        }
+        var playerSelecting = players[playerNum - 1];
 
         var blockBoxOphelia = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxOphelia.scale.x = 0.405;
@@ -181,12 +177,58 @@ class CharacterSelect{
         function buttonDown() {
             this.isdown = true;
             this.alpha = 0.6;
+            
+            // Sets character for player selecting
+            switch (this) {
+            case blockBoxAlfyn:
+                playerSelecting.setCharacter(new Character(CharaEnum.ALFYN));
+                break;
+            case blockBoxCyrus:
+                playerSelecting.setCharacter(new Character(CharaEnum.CYRUS));
+                break;
+            case blockBoxHannit:
+                playerSelecting.setCharacter(new Character(CharaEnum.HANNIT));
+                break;
+            case blockBoxOlberic:
+                playerSelecting.setCharacter(new Character(CharaEnum.OLBERIC));
+                break;
+            case blockBoxOphelia:
+                playerSelecting.setCharacter(new Character(CharaEnum.OPHELIA));
+                break;
+            case blockBoxPrimrose:
+                playerSelecting.setCharacter(new Character(CharaEnum.PRIMROSE));
+                break;
+            case blockBoxTherion:
+                playerSelecting.setCharacter(new Character(CharaEnum.THERION));
+                break;
+            case blockBoxTressa:
+                playerSelecting.setCharacter(new Character(CharaEnum.TRESSA));
+                break;
+            }
+            console.log("Player " + playerNum + " selected " + playerSelecting.getCharacter().getName());
+
             selected = true;
             for (let i = 0; i < blockBoxArray.length; i++) {
                 if (blockBoxArray[i] != this) {
                     blockBoxArray[i].alpha = 0;
                 }
             }
+
+            if (nextButton != new PIXI.Sprite(activeNextTexture)) {
+                app.stage.removeChild(nextButton);
+                nextButton = new PIXI.Sprite(activeNextTexture);
+
+                nextButton.scale.x = 0.185;
+                nextButton.scale.y = 0.185;
+                nextButton.x = 688;
+                nextButton.y = 420;
+        
+                nextButton.interactive = true;
+                nextButton.buttonMode = true;
+
+                app.stage.addChild(nextButton);
+            }
+
         }
         
         function buttonUp() {
@@ -218,6 +260,13 @@ class CharacterSelect{
 
         function onButtonDown() {
             this.isdown = true;
+            if (this == new PIXI.Sprite(activeNextTexture)) {
+                if (playerNum < players.length) {
+                    playerNum++;
+                    playerSelecting = players[playerNum];
+                }
+                console.log("Player " + playerNum + " Character Select Screen");
+            }
             // Code here that leads to the main game
         }
         
@@ -261,14 +310,6 @@ class CharacterSelect{
 
         this.createPlayer = function() {
             // Currently unsupported
-        }
-        
-        this.select = function(character) {
-
-        }
-    
-        this.unselect = function(character) {
-    
         }
     
         this.deleteScene = function(character) {

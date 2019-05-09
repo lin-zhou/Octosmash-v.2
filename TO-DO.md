@@ -9,6 +9,7 @@ Here are some things I should definitely do:
 ## Optional, but nice to have
 These are a couple of nifty things that I might reasonably get to:
 * Support more than two players
+* Create a menu screen so that players can navigate the game dynamically
 * Allow players to map their own controls
 * Be able to replay the game without choosing characters again (and without that pesky lag from Octosmash 110)
 * Healing items/items in general

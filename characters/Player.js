@@ -1,28 +1,19 @@
 class Player {
 
-    constructor(name, number) {
+    constructor(number) {
 
-        if (name == null) {
-            name = "P" + number;
-        } else {
-            var name;
-        }
+        var name = null;
         var number = number;
         var character;
         var startX;
         var startY = 205;
 
-        switch (number) {
-        case 1:
-            startX = 210 + character.getXMod();
-            if(character.getSprite().x >= 0) {
-                character.getSprite().x *= -1;
-            }
-            break;
-        case 2:
-            character.setXMod(character.getXMod() *= -1);
-            startX = 655 + character.getXMod();
-            break;
+        this.getName = function() {
+            return name;
+        }
+
+        this.setName = function(newName) {
+            name = newName;
         }
 
         this.getNumber = function() {
@@ -33,8 +24,24 @@ class Player {
             return character;
         }
 
-        this.setCharacter = function(character) {
-            this.character = character;
+        this.setCharacter = function(newChara) {
+            character = newChara;
+            this.updateCharacterDetails();
+        }
+
+        this.updateCharacterDetails = function() {
+            switch (number) {
+                case 1:
+                    startX = 210 + character.getXMod();
+                    if (character.getSprite().x >= 0) {
+                        character.getSprite().x *= -1;
+                    }
+                    break;
+                case 2:
+                    character.setXMod(character.getXMod() *= -1);
+                    startX = 655 + character.getXMod();
+                    break;
+                }
         }
 
         this.getStartX = function() {
@@ -43,10 +50,6 @@ class Player {
 
         this.getStartY = function() {
             return startY;
-        }
-
-        this.setName = function(newName) {
-            name = newName;
         }
 
     }
