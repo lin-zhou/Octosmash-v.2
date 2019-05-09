@@ -160,8 +160,8 @@ class CharacterSelect{
         nextButton.x = 688;
         nextButton.y = 420;
 
-        nextButton.interactive = true;
-        nextButton.buttonMode = true;
+        nextButton.interactive = false;
+        nextButton.buttonMode = false
 
         nextButton
             .on('pointerdown', onButtonDown)
@@ -214,19 +214,16 @@ class CharacterSelect{
                 }
             }
 
-            if (nextButton != new PIXI.Sprite(activeNextTexture)) {
-                app.stage.removeChild(nextButton);
-                nextButton = new PIXI.Sprite(activeNextTexture);
+            if (nextButton.texture != activeNextTexture) {
+                nextButton.texture = activeNextTexture;
 
                 nextButton.scale.x = 0.185;
                 nextButton.scale.y = 0.185;
                 nextButton.x = 688;
                 nextButton.y = 420;
-        
+
                 nextButton.interactive = true;
                 nextButton.buttonMode = true;
-
-                app.stage.addChild(nextButton);
             }
 
         }
@@ -260,12 +257,23 @@ class CharacterSelect{
 
         function onButtonDown() {
             this.isdown = true;
-            if (this == new PIXI.Sprite(activeNextTexture)) {
+            if (this.texture == activeNextHoverTexture) {
                 if (playerNum < players.length) {
                     playerNum++;
-                    playerSelecting = players[playerNum];
+                    playerSelecting = players[playerNum - 1];
                 }
                 console.log("Player " + playerNum + " Character Select Screen");
+                for (let i = 0; i < blockBoxArray.length; i++) {
+                    blockBoxArray[i].alpha = 0;
+                }
+                this.texture = nextTexture;
+                nextButton.scale.x = 0.3;
+                nextButton.scale.y = 0.3;
+                nextButton.x = 688;
+                nextButton.y = 420;
+        
+                nextButton.interactive = false;
+                nextButton.buttonMode = false
             }
             // Code here that leads to the main game
         }
@@ -273,12 +281,15 @@ class CharacterSelect{
         function onButtonUp() {
             this.isdown = false;
             if (this.isOver) {
-                // Makes the button look different
-            }
-            else {
-                this.texture = nextTexture;
-                nextButton.scale.x = 0.3;
-                nextButton.scale.y = 0.3;
+                this.texture = activeNextHoverTexture;
+                nextButton.scale.x = 0.185;
+                nextButton.scale.y = 0.185;
+                nextButton.x = 688;
+                nextButton.y = 420;
+            } else {
+                this.texture = activeNextTexture;
+                nextButton.scale.x = 0.185;
+                nextButton.scale.y = 0.185;
                 nextButton.x = 688;
                 nextButton.y = 420;
             }
@@ -289,7 +300,11 @@ class CharacterSelect{
             if (this.isdown) {
                 return;
             }
-            // Makes the button look different
+            this.texture = activeNextHoverTexture;
+            nextButton.scale.x = 0.185;
+            nextButton.scale.y = 0.185;
+            nextButton.x = 688;
+            nextButton.y = 420;
         }
         
         function onButtonOut() {
@@ -297,9 +312,9 @@ class CharacterSelect{
             if (this.isdown) {
                 return;
             }
-            this.texture = nextTexture;
-            nextButton.scale.x = 0.3;
-            nextButton.scale.y = 0.3;
+            this.texture = activeNextTexture;
+            nextButton.scale.x = 0.185;
+            nextButton.scale.y = 0.185;
             nextButton.x = 688;
             nextButton.y = 420;
         } 
