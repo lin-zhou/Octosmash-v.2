@@ -159,12 +159,8 @@ class Player {
             character.getSprite().x += 65;
         }
 
-        this.canJump = function() {
-            return (jumpCount < 2);
-        }
-
         this.jump = function() {
-            if (this.canJump()) {
+            if (jumpCount < 2) {
                 vel = -4;
                 jumpCount++;
             }
@@ -184,6 +180,10 @@ class Player {
 
         this.resetY = function() {
             character.getSprite().y = startY;
+        }
+
+        this.resetLowY = function() {
+            character.getSprite().y = 295;
         }
 
     }

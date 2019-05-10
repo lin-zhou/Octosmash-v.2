@@ -153,8 +153,6 @@ class MainGame {
                 
                 // Test if game has ended, etc.
 
-                // Note: May want to move some of the Character functions to Player
-
                 // CHARACTERS MOVING
                 for (var j = 0; j < players.length; j++) {
                     players[j].getCharacter().getSprite().x += (players[j].getLeftMult() + players[j].getRightMult()) * speed;
@@ -169,6 +167,9 @@ class MainGame {
                     if (players[j].getCharacter().isGrounded()) {
                         players[j].setVel(0);
                         players[j].resetY();
+                    }
+                    if (players[j].getCharacter().isUnderStage()) {
+                        players[j].resetLowY();
                     }
                 }
 

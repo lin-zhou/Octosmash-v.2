@@ -78,9 +78,16 @@ class Character {
             return sprite.scale.x >= 0;
         }
 
+        // SUGGESTION: Make a stage object instead of these functions
+        // These two functions could be moved to Player
         this.isGrounded = function() {
-            return ((this.facingLeft() && sprite.y >= 205 && sprite.y < 207 && sprite.x > 62 && sprite.x < 718) ||
-                !this.facingLeft() && sprite.y >= 205 && sprite.y < 207 && sprite.x > 135 && sprite.x < 788);
+            return ((this.facingLeft() && sprite.y >= 205 && sprite.y <= 207 && sprite.x > 62 && sprite.x < 718) ||
+                !this.facingLeft() && sprite.y >= 205 && sprite.y <= 207 && sprite.x > 135 && sprite.x < 788);
+        }
+
+        this.isUnderStage = function() {
+            return ((this.facingLeft() && sprite.y >= 208 && sprite.y <= 295 && sprite.x > 62 && sprite.x < 718) ||
+            !this.facingLeft() && sprite.y >= 208 && sprite.y <= 295 && sprite.x > 135 && sprite.x < 788);
         }
 
     }
