@@ -20,6 +20,9 @@ class Player {
         var downMult = 0;
         var lastKey = 0;
 
+        var jumpCount = 0;
+        var vel = 0;
+
         this.getName = function() {
             return name;
         }
@@ -118,7 +121,7 @@ class Player {
             return upMult;
         }
 
-        this.setUptMult = function(mult) {
+        this.setUpMult = function(mult) {
             upMult = mult;
         }
 
@@ -134,7 +137,7 @@ class Player {
             return downMult;
         }
 
-        this.setDowntMult = function(mult) {
+        this.setDownMult = function(mult) {
             downMult = mult;
         }
 
@@ -144,6 +147,43 @@ class Player {
 
         this.setLastKey = function(last) {
             lastKey = last;
+        }
+
+        this.turnLeft = function() {
+            character.getSprite().scale.x *= -1;
+            character.getSprite().x -= 65;
+        }
+
+        this.turnRight = function() {
+            character.getSprite().scale.x *= -1;
+            character.getSprite().x += 65;
+        }
+
+        this.canJump = function() {
+            return (jumpCount < 2);
+        }
+
+        this.jump = function() {
+            if (this.canJump()) {
+                vel = -4;
+                jumpCount++;
+            }
+        }
+
+        this.setJumpCount = function(newCt) {
+            jumpCount = newCt;
+        }
+
+        this.getVel = function() {
+            return vel;
+        }
+
+        this.setVel = function(newVel) {
+            vel = newVel;
+        }
+
+        this.resetY = function() {
+            character.getSprite().y = startY;
         }
 
     }

@@ -74,14 +74,13 @@ class Character {
             xMod = newXMod;
         }
 
-        this.turnLeft = function() {
-            sprite.scale.x *= -1;
-            sprite.x -= 65;
+        this.facingLeft = function() {
+            return sprite.scale.x >= 0;
         }
 
-        this.turnRight = function() {
-            sprite.scale.x *= -1;
-            sprite.x += 65;
+        this.isGrounded = function() {
+            return ((this.facingLeft() && sprite.y >= 205 && sprite.y < 207 && sprite.x > 62 && sprite.x < 718) ||
+                !this.facingLeft() && sprite.y >= 205 && sprite.y < 207 && sprite.x > 135 && sprite.x < 788);
         }
 
     }

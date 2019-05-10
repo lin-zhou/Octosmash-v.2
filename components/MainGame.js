@@ -26,22 +26,32 @@ class MainGame {
             var DOWN = players[0].getDownKey();
             var ATTACK = players[0].getAttackKey();
 
+            // Left movement
             if (e.keyCode == LEFT) {
                 players[0].setLeftMult(-1);
                 if (players[0].getCharacter().getSprite().scale.x < 0) {
-                    players[0].getCharacter().turnLeft();
+                    players[0].turnLeft();
                 }
                 players[0].setLastKey(LEFT);
+
+            // Jump
             } else if (e.keyCode == UP) {
                 players[0].setLastKey(UP);
+                players[0].jump();
+
+            // Right movement
             } else if (e.keyCode == RIGHT) {
                 players[0].setRightMult(1);
                 if (players[0].getCharacter().getSprite().scale.x >= 0) {
-                    players[0].getCharacter().turnRight();
+                    players[0].turnRight();
                 }
                 players[0].setLastKey(RIGHT);
+            
+            // Fast fall - currently not supported
             } else if (e.keyCode == DOWN) {
                 players[0].setLastKey(DOWN);
+
+            // Attack
             } else if (e.keyCode == ATTACK) {
                 players[0].setLastKey(ATTACK);
             }
@@ -81,22 +91,32 @@ class MainGame {
             var DOWN = players[1].getDownKey();
             var ATTACK = players[1].getAttackKey();
     
+            // Left movement
             if (e.keyCode == LEFT) {
                 players[1].setLeftMult(-1);
                 if (players[1].getCharacter().getSprite().scale.x < 0) {
-                    players[1].getCharacter().turnLeft();
+                    players[1].turnLeft();
                 }
                 players[1].setLastKey(LEFT);
+
+            // Jump
             } else if (e.keyCode == UP) {
                 players[1].setLastKey(UP);
+                players[1].jump();
+
+            // Right movement
             } else if (e.keyCode == RIGHT) {
                 players[1].setRightMult(1);
                 if (players[1].getCharacter().getSprite().scale.x >= 0) {
-                    players[1].getCharacter().turnRight();
+                    players[1].turnRight();
                 }
                 players[1].setLastKey(RIGHT);
+
+            // Fast fall - currently not supported
             } else if (e.keyCode == DOWN) {
                 players[1].setLastKey(DOWN);
+
+            // Attack
             } else if (e.keyCode == ATTACK) {
                 players[1].setLastKey(ATTACK);
             }
@@ -133,9 +153,23 @@ class MainGame {
                 
                 // Test if game has ended, etc.
 
+                // Note: May want to move some of the Character functions to Player
+
                 // CHARACTERS MOVING
                 for (var j = 0; j < players.length; j++) {
                     players[j].getCharacter().getSprite().x += (players[j].getLeftMult() + players[j].getRightMult()) * speed;
+                    players[j].getCharacter().getSprite().y += players[j].getVel();
+                    if (players[j].getCharacter().isGrounded()) {
+                        players[j].setVel(0);
+                        players[j].setJumpCount(0);
+                    }
+                    if (players[j].getVel() < 1.5) {
+                        players[j].setVel(players[j].getVel() + acc);
+                    }
+                    if (players[j].getCharacter().isGrounded()) {
+                        players[j].setVel(0);
+                        players[j].resetY();
+                    }
                 }
 
             }
