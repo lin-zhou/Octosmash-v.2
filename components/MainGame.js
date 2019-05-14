@@ -194,8 +194,19 @@ class MainGame {
                                     } else {
                                         players[l].hitLeft();
                                     }
+                                    kRemoved = true;
                                     magic.remove(app);
                                     players[j].getMagicArr().splice(k, 1);
+                                } else {
+                                    for (var m = 0; m < players[l].getMagicArr().length; m++) {
+                                        var mag2 = players[l].getMagicArr()[m];
+                                        if (isColliding(magic.getSprite(), mag2.getSprite())) {
+                                            magic.remove(app);
+                                            mag2.remove(app);
+                                            players[j].getMagicArr().splice(k, 1);
+                                            players[l].getMagicArr().splice(m, 1);
+                                        }
+                                    }
                                 }
                             }
                         }
