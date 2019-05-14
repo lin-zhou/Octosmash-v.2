@@ -183,11 +183,27 @@ class MainGame {
                         players[j].resetLowY();
                     }
                     for (var k = 0; k < players[j].getMagicArr().length; k++) {
+                        var kRemoved = false;
                         var magic = players[j].getMagicArr()[k];
                         magic.getSprite().x += (2 * magic.getDirection());
-                        if (isOffScreen(magic.getSprite())) {
-                            magic.remove(app);
-                            players[j].getMagicArr().splice(k, 1);
+                        for (var l = 0; l < players.length; l++) {
+                            if (players[l] != players[j]) {
+                                if (isColliding(players[l].getCharacter().getSprite(), magic.getSprite())) {
+                                    if (magic.getDirection() >= 0) {
+                                        players[l].hitRight();
+                                    } else {
+                                        players[l].hitLeft();
+                                    }
+                                    magic.remove(app);
+                                    players[j].getMagicArr().splice(k, 1);
+                                }
+                            }
+                        }
+                        if (!kRemoved) {
+                            if (isOffScreen(magic.getSprite())) {
+                                magic.remove(app);
+                                players[j].getMagicArr().splice(k, 1);
+                            }
                         }
                     }
                 }
