@@ -24,7 +24,9 @@ class Player {
         var vel = 0;
 
         var canShoot = true;
-        var magicArr = []; 
+        var magicArr = [];
+
+        var damage;
 
         this.getName = function() {
             return name;
@@ -192,9 +194,11 @@ class Player {
         this.shoot = function(app) {
             if (canShoot) {
                 canShoot = false;
-                var magic = new Magic(character.getSprite().x - 10, character.getSprite().y + 15);
+                var magic = new Magic(character.getSprite().x - 15, character.getSprite().y + 15);
                 if (character.facingLeft()) {
                     magic.flipDirection();
+                } else {
+                    magic.getSprite().scale.x *= -1;
                 }
                 magicArr.push(magic);
                 app.stage.addChild(magic.getSprite());
@@ -206,6 +210,10 @@ class Player {
 
         this.getMagicArr = function() {
             return magicArr;
+        }
+
+        this.getDamage = function() {
+            return damage;
         }
 
     }

@@ -20,6 +20,10 @@ class Magic {
             direction = -1;
         }
 
+        this.remove = function(app) {
+            app.stage.removeChild(sprite);
+        }
+
     }
 
 }

@@ -7,6 +7,7 @@ class MainGame {
 
         var playing = true;
         var players = players;
+        var gameOver = false;
 
         // NUMBERS FOR MOTION
         const speed = 1.5;
@@ -153,7 +154,15 @@ class MainGame {
         app.ticker.add((delta) => {
             for (var i = 0; i < 4; i ++) {
                 
-                // Test if game has ended, etc.
+                // Test if game has ended
+                for (var j = 0; j < players.length; j++) {
+                    if (isOutOfBounds(players[j].getCharacter().getSprite())) {
+                        if (!gameOver) {
+                            gameOver = true;
+                            alert("Game Over");
+                        }
+                    }
+                }
 
                 // CHARACTERS MOVING
                 for (var j = 0; j < players.length; j++) {
@@ -174,10 +183,14 @@ class MainGame {
                         players[j].resetLowY();
                     }
                     for (var k = 0; k < players[j].getMagicArr().length; k++) {
-                        players[j].getMagicArr()[k].getSprite().x += (2 * players[j].getMagicArr()[k].getDirection());
+                        var magic = players[j].getMagicArr()[k];
+                        magic.getSprite().x += (2 * magic.getDirection());
+                        if (isOffScreen(magic.getSprite())) {
+                            magic.remove(app);
+                            players[j].getMagicArr().splice(k, 1);
+                        }
                     }
                 }
-
             }
 
         }, false);
