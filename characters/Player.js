@@ -23,6 +23,8 @@ class Player {
         var jumpCount = 0;
         var vel = 0;
 
+        var magicArr = []; 
+
         this.getName = function() {
             return name;
         }
@@ -184,6 +186,19 @@ class Player {
 
         this.resetLowY = function() {
             character.getSprite().y = 295;
+        }
+
+        this.shoot = function(app) {
+            var magic = new Magic(character.getSprite().x - 10, character.getSprite().y + 15);
+            if (character.facingLeft()) {
+                magic.flipDirection();
+            }
+            magicArr.push(magic);
+            app.stage.addChild(magic.getSprite());
+        }
+
+        this.getMagicArr = function() {
+            return magicArr;
         }
 
     }

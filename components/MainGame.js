@@ -54,6 +54,7 @@ class MainGame {
             // Attack
             } else if (e.keyCode == ATTACK) {
                 players[0].setLastKey(ATTACK);
+                players[0].shoot(app);
             }
 
         }, false);
@@ -119,6 +120,7 @@ class MainGame {
             // Attack
             } else if (e.keyCode == ATTACK) {
                 players[1].setLastKey(ATTACK);
+                players[1].shoot(app);
             }
     
         }, false);
@@ -170,6 +172,9 @@ class MainGame {
                     }
                     if (players[j].getCharacter().isUnderStage()) {
                         players[j].resetLowY();
+                    }
+                    for (var k = 0; k < players[j].getMagicArr().length; k++) {
+                        players[j].getMagicArr()[k].getSprite().x += (2 * players[j].getMagicArr()[k].getDirection());
                     }
                 }
 
