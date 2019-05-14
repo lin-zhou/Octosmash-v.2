@@ -23,6 +23,7 @@ class Player {
         var jumpCount = 0;
         var vel = 0;
 
+        var canShoot = true;
         var magicArr = []; 
 
         this.getName = function() {
@@ -189,12 +190,18 @@ class Player {
         }
 
         this.shoot = function(app) {
-            var magic = new Magic(character.getSprite().x - 10, character.getSprite().y + 15);
-            if (character.facingLeft()) {
-                magic.flipDirection();
+            if (canShoot) {
+                canShoot = false;
+                var magic = new Magic(character.getSprite().x - 10, character.getSprite().y + 15);
+                if (character.facingLeft()) {
+                    magic.flipDirection();
+                }
+                magicArr.push(magic);
+                app.stage.addChild(magic.getSprite());
+                setTimeout(function () {
+                    canShoot = true;
+                }, 250)
             }
-            magicArr.push(magic);
-            app.stage.addChild(magic.getSprite());
         }
 
         this.getMagicArr = function() {
