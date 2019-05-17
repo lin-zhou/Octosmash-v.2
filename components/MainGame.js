@@ -8,6 +8,8 @@ class MainGame {
         var playing = true;
         var players = players;
         var gameOver = false;
+        var winner;
+        var gameOverMessage;
 
         // NUMBERS FOR MOTION
         const speed = 1.5;
@@ -159,7 +161,16 @@ class MainGame {
                     if (isOutOfBounds(players[j].getCharacter().getSprite())) {
                         if (!gameOver) {
                             gameOver = true;
-                            alert("Game Over");
+                            if (!isOutOfBounds(players[0].getCharacter().getSprite())) {
+                                winner = players[0];
+                            } else if (!isOutOfBounds(players[1].getCharacter().getSprite())) {
+                                winner = players[1];
+                            }
+                            gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
+                            gameOverMessage.x = 298;
+                            gameOverMessage.y = 280;
+                            app.stage.addChild(gameMessage);
+                            app.stage.addChild(gameOverMessage);
                         }
                     }
                 }
@@ -225,3 +236,7 @@ class MainGame {
     }
 
 }
+
+const gameMessage = new PIXI.Text("GAME!", gameTextStyle);
+gameMessage.x = 278;
+gameMessage.y = 180;

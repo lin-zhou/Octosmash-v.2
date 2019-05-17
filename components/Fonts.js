@@ -14,7 +14,7 @@ const startStyle = new PIXI.TextStyle({
     wordWrapWidth: 440
 });
 
-const style = new PIXI.TextStyle({
+const winnerStyle = new PIXI.TextStyle({
     fontFamily: "Arial",
     fontSize: 40,
     fontWeight: "bold",
