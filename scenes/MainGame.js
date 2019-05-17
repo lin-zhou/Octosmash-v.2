@@ -28,36 +28,48 @@ class MainGame {
             var RIGHT = players[0].getRightKey();
             var DOWN = players[0].getDownKey();
             var ATTACK = players[0].getAttackKey();
+            var SIDESTEP = players[0].getSidestepKey();
 
-            // Left movement
-            if (e.keyCode == LEFT) {
+            switch (e.keyCode) {
+            
+            // Left Movement
+            case LEFT:
                 players[0].setLeftMult(-1);
                 if (players[0].getCharacter().getSprite().scale.x < 0) {
                     players[0].turnLeft();
                 }
                 players[0].setLastKey(LEFT);
+                break;
 
             // Jump
-            } else if (e.keyCode == UP) {
+            case UP:
                 players[0].setLastKey(UP);
                 players[0].jump();
+                break;
 
-            // Right movement
-            } else if (e.keyCode == RIGHT) {
+            // Right Movement
+            case RIGHT:
                 players[0].setRightMult(1);
                 if (players[0].getCharacter().getSprite().scale.x >= 0) {
                     players[0].turnRight();
                 }
                 players[0].setLastKey(RIGHT);
-            
-            // Fast fall - currently not supported
-            } else if (e.keyCode == DOWN) {
+                break;
+
+            // Fast Fall (unsupported)
+            case DOWN:
                 players[0].setLastKey(DOWN);
+                break;
 
             // Attack
-            } else if (e.keyCode == ATTACK) {
+            case ATTACK:
                 players[0].setLastKey(ATTACK);
                 players[0].shoot(app);
+                break;
+
+            // Sidestep/Shield
+            case SIDESTEP:
+                break;
             }
 
         }, false);
@@ -68,21 +80,42 @@ class MainGame {
             var RIGHT = players[0].getRightKey();
             var DOWN = players[0].getDownKey();
             var ATTACK = players[0].getAttackKey();
+            var SIDESTEP = players[0].getSidestepKey();
 
-            if (e.keyCode == LEFT) {
+            switch (e.keyCode) {
+            
+            // Left Movement
+            case LEFT:
                 players[0].setLeftMult(0);
                 players[0].setLastKey(0);
-            } else if (e.keyCode == UP) {
-                players[0].setUpMult(0);
+                break;
+    
+            // Jump
+            case UP:
                 players[0].setLastKey(0);
-            } else if (e.keyCode == RIGHT) {
+                break;
+    
+            // Right Movement
+            case RIGHT:
                 players[0].setRightMult(0);
                 players[0].setLastKey(0);
-            } else if (e.keyCode == DOWN) {
+                break;
+    
+            // Fast Fall (unsupported)
+            case DOWN:
                 players[0].setDownMult(0);
                 players[0].setLastKey(0);
-            } else if (e.keyCode == ATTACK) {
+                break;
+    
+            // Attack
+            case ATTACK:
                 players[0].setLastKey(0);
+                break;
+    
+            // Sidestep/Shield
+            case SIDESTEP:
+                players[0].setLastKey(0);
+                break;
             }
 
         }, false);
@@ -94,37 +127,49 @@ class MainGame {
             var RIGHT = players[1].getRightKey();
             var DOWN = players[1].getDownKey();
             var ATTACK = players[1].getAttackKey();
-    
-            // Left movement
-            if (e.keyCode == LEFT) {
+            var SIDESTEP = players[1].getSidestepKey();
+
+            switch (e.keyCode) {
+            
+            // Left Movement
+            case LEFT:
                 players[1].setLeftMult(-1);
                 if (players[1].getCharacter().getSprite().scale.x < 0) {
                     players[1].turnLeft();
                 }
                 players[1].setLastKey(LEFT);
-
+                break;
+    
             // Jump
-            } else if (e.keyCode == UP) {
+            case UP:
                 players[1].setLastKey(UP);
                 players[1].jump();
-
-            // Right movement
-            } else if (e.keyCode == RIGHT) {
+                break;
+    
+            // Right Movement
+            case RIGHT:
                 players[1].setRightMult(1);
                 if (players[1].getCharacter().getSprite().scale.x >= 0) {
                     players[1].turnRight();
                 }
                 players[1].setLastKey(RIGHT);
-
-            // Fast fall - currently not supported
-            } else if (e.keyCode == DOWN) {
+                break;
+    
+            // Fast Fall (unsupported)
+            case DOWN:
                 players[1].setLastKey(DOWN);
-
+                break;
+    
             // Attack
-            } else if (e.keyCode == ATTACK) {
+            case ATTACK:
                 players[1].setLastKey(ATTACK);
                 players[1].shoot(app);
-            }
+                break;
+    
+            // Sidestep/Shield
+            case SIDESTEP:
+                break;
+            }    
     
         }, false);
     
@@ -134,22 +179,43 @@ class MainGame {
             var RIGHT = players[1].getRightKey();
             var DOWN = players[1].getDownKey();
             var ATTACK = players[1].getAttackKey();
+            var SIDESTEP = players[1].getSidestepKey();
+
+            switch (e.keyCode) {
+            
+                // Left Movement
+                case LEFT:
+                    players[1].setLeftMult(0);
+                    players[1].setLastKey(0);
+                    break;
     
-            if (e.keyCode == LEFT) {
-                players[1].setLeftMult(0);
-                players[1].setLastKey(0);
-            } else if (e.keyCode == UP) {
-                players[1].setUpMult(0);
-                players[1].setLastKey(0);
-            } else if (e.keyCode == RIGHT) {
-                players[1].setRightMult(0);
-                players[1].setLastKey(0);
-            } else if (e.keyCode == DOWN) {
-                players[1].setDownMult(0);
-                players[1].setLastKey(0);
-            } else if (e.keyCode == ATTACK) {
-                players[1].setLastKey(0);
-            }
+                // Jump
+                case UP:
+                    players[1].setLastKey(0);
+                    break;
+    
+                // Right Movement
+                case RIGHT:
+                    players[1].setRightMult(0);
+                    players[1].setLastKey(0);
+                    break;
+    
+                // Fast Fall (unsupported)
+                case DOWN:
+                    players[1].setDownMult(0);
+                    players[1].setLastKey(0);
+                    break;
+    
+                // Attack
+                case ATTACK:
+                    players[1].setLastKey(0);
+                    break;
+    
+                // Sidestep/Shield
+                case SIDESTEP:
+                    players[1].setLastKey(0);
+                    break;
+                }
     
         }, false);
 

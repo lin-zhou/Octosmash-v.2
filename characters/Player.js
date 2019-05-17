@@ -13,9 +13,9 @@ class Player {
         var right;
         var down;
         var attack;
+        var sidestep;
 
         var leftMult = 0;
-        var upMult = 0;
         var rightMult = 0;
         var downMult = 0;
         var lastKey = 0;
@@ -65,6 +65,7 @@ class Player {
                     right = 68;
                     down = 83;
                     attack = 51;
+                    sidestep = 82;
 
                     break;
 
@@ -80,6 +81,7 @@ class Player {
                     right = 39;
                     down = 40;
                     attack = 191;
+                    sidestep = 188;
 
                     break;
 
@@ -114,20 +116,16 @@ class Player {
             return attack;
         }
 
+        this.getSidestepKey = function() {
+            return sidestep;
+        }
+
         this.getLeftMult = function() {
             return leftMult;
         }
 
         this.setLeftMult = function(mult) {
             leftMult = mult;
-        }
-
-        this.getUpMult = function() {
-            return upMult;
-        }
-
-        this.setUpMult = function(mult) {
-            upMult = mult;
         }
 
         this.getRightMult = function() {
@@ -224,6 +222,14 @@ class Player {
         this.hitLeft = function() {
             character.getSprite().x -= 30 + (damage * 5);
             damage += 2;
+        }
+
+        this.sideStepLeft = function() {
+            character.getSprite().x -= 30;
+        }
+
+        this.sideStepRight = function() {
+            character.getSprite().x += 30;
         }
 
     }
