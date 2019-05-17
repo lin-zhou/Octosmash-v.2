@@ -5,11 +5,37 @@ class MainGame {
         // Theoreticlaly, this scene variable could be used to choose different backgrounds
         // var scene = scene;
 
-        var playing = true;
         var players = players;
         var gameOver = false;
         var winner;
         var gameOverMessage;
+
+        var damageDisplayNames = [];
+        var damageDisplays = [];
+
+        for (var i = 0; i < players.length; i++) {
+            damageDisplayNames[i] = new PIXI.Text("Player " + players[i].getNumber(), playerDamageStyle);
+            damageDisplays[i] = new PIXI.Text(players[0].getDamage(), damageStyle);
+
+            switch (players.length) {
+            case 2: 
+                damageDisplayNames[i].x = 195 + (i * 350);
+                damageDisplayNames[i].y = 447;
+                damageDisplays[i].x = 290 + (i * 350);
+                damageDisplays[i].y = 440;
+                break;
+            case 3:
+                // Spacing for three players
+                break;
+            case 4:
+                // Spacing for four players
+                break;
+            }
+
+            app.stage.addChild(damageDisplayNames[i]);
+            app.stage.addChild(damageDisplays[i]);
+
+        }
 
         // NUMBERS FOR MOTION
         const speed = 1.5;
