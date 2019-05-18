@@ -217,7 +217,11 @@ class Player {
         this.shoot = function(app) {
             if (canShoot) {
                 canShoot = false;
-                var magic = new Magic(character.getSprite().x - 15, character.getSprite().y + 15);
+                if (character.facingLeft()) { 
+                    var magic = new Magic(character.getSprite().x - 15, character.getSprite().y + 15);
+                } else {
+                    var magic = new Magic(character.getSprite().x + 15, character.getSprite().y + 15);
+                }
                 if (character.facingLeft()) {
                     magic.flipDirection();
                 } else {

@@ -303,10 +303,12 @@ class MainGame {
                         for (var l = 0; l < players.length; l++) {
                             if (players[l] != players[j]) {
                                 if (isColliding(players[l].getCharacter().getSprite(), magic.getSprite())) {
-                                    if (magic.getDirection() >= 0) {
-                                        players[l].hitRight();
-                                    } else {
-                                        players[l].hitLeft();
+                                    if (!players[l].isShieldUp()) {
+                                        if (magic.getDirection() >= 0) {
+                                            players[l].hitRight();
+                                        } else {
+                                            players[l].hitLeft();
+                                        }
                                     }
                                     kRemoved = true;
                                     magic.remove(app);
