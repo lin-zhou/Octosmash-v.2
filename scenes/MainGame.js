@@ -26,231 +26,30 @@ class MainGame {
         // Note: Maybe use a loop for all players
 
         // PLAYER ONE MOVEMENT
-        window.addEventListener("keydown", (e) => {
-            var LEFT = players[0].getLeftKey();
-            var UP = players[0].getUpKey();
-            var RIGHT = players[0].getRightKey();
-            var DOWN = players[0].getDownKey();
-            var ATTACK = players[0].getAttackKey();
-            var SIDESTEP = players[0].getSidestepKey();
-
-            switch (e.keyCode) {
-            
-            // Left Movement
-            case LEFT:
-                players[0].setLeftMult(-1);
-                if (players[0].getCharacter().getSprite().scale.x < 0) {
-                    players[0].turnLeft();
-                }
-                players[0].setMovingLeft(true);
-                players[0].setLastKey(LEFT);
-                break;
-
-            // Jump
-            case UP:
-                players[0].setLastKey(UP);
-                players[0].jump();
-                break;
-
-            // Right Movement
-            case RIGHT:
-                players[0].setRightMult(1);
-                if (players[0].getCharacter().getSprite().scale.x >= 0) {
-                    players[0].turnRight();
-                }
-                players[0].setMovingRight(true);
-                players[0].setLastKey(RIGHT);
-                break;
-
-            // Fast Fall (unsupported)
-            case DOWN:
-                players[0].setLastKey(DOWN);
-                break;
-
-            // Attack
-            case ATTACK:
-                players[0].setLastKey(ATTACK);
-                players[0].shoot(app);
-                break;
-
-            // Sidestep/Shield
-            case SIDESTEP:
-                players[0].setLastKey(SIDESTEP);
-                if (players[0].isMoving()) {
-                    players[0].sidestep();
-                } else if (players[0].getCharacter().isGrounded()) {
-                    players[0].useShield();
-                    app.stage.addChild(players[0].getShield());
-                }
-                break;
+        function p1Movement(e) {
+            if (e.type == "keydown") {
+                movement(app, players[0], e.keyCode);
+            } else if (e.type == "keyup") {
+                stopMove(app, players[0], e.keyCode);
             }
+        }
+        
+        window.addEventListener("keydown", p1Movement);
 
-        }, false);
-
-        window.addEventListener("keyup", (e) => {
-            var LEFT = players[0].getLeftKey();
-            var UP = players[0].getUpKey();
-            var RIGHT = players[0].getRightKey();
-            var DOWN = players[0].getDownKey();
-            var ATTACK = players[0].getAttackKey();
-            var SIDESTEP = players[0].getSidestepKey();
-
-            switch (e.keyCode) {
-            
-            // Left Movement
-            case LEFT:
-                players[0].setLeftMult(0);
-                players[0].setMovingLeft(false);
-                players[0].setLastKey(0);
-                break;
-    
-            // Jump
-            case UP:
-                players[0].setLastKey(0);
-                break;
-    
-            // Right Movement
-            case RIGHT:
-                players[0].setRightMult(0);
-                players[0].setMovingRight(false);
-                players[0].setLastKey(0);
-                break;
-    
-            // Fast Fall (unsupported)
-            case DOWN:
-                players[0].setDownMult(0);
-                players[0].setLastKey(0);
-                break;
-    
-            // Attack
-            case ATTACK:
-                players[0].setLastKey(0);
-                break;
-    
-            // Sidestep/Shield
-            case SIDESTEP:
-                if (players[0].isShieldUp()) {
-                    players[0].dropShield();
-                    app.stage.removeChild(players[0].getShield());
-                }
-                players[0].setLastKey(0);
-                break;
-            }
-
-        }, false);
+        window.addEventListener("keyup", p1Movement);
 
         // PLAYER TWO MOVEMENT
-        window.addEventListener("keydown", (e) => {
-            var LEFT = players[1].getLeftKey();
-            var UP = players[1].getUpKey();
-            var RIGHT = players[1].getRightKey();
-            var DOWN = players[1].getDownKey();
-            var ATTACK = players[1].getAttackKey();
-            var SIDESTEP = players[1].getSidestepKey();
-
-            switch (e.keyCode) {
-            
-            // Left Movement
-            case LEFT:
-                players[1].setLeftMult(-1);
-                if (players[1].getCharacter().getSprite().scale.x < 0) {
-                    players[1].turnLeft();
-                }
-                players[1].setMovingLeft(true);
-                players[1].setLastKey(LEFT);
-                break;
+        function p2Movement(e) {
+            if (e.type == "keydown") {
+                movement(app, players[1], e.keyCode);
+            } else if (e.type == "keyup") {
+                stopMove(app, players[1], e.keyCode);
+            }
+        }
+       
+        window.addEventListener("keydown", p2Movement);
     
-            // Jump
-            case UP:
-                players[1].setLastKey(UP);
-                players[1].jump();
-                break;
-    
-            // Right Movement
-            case RIGHT:
-                players[1].setRightMult(1);
-                if (players[1].getCharacter().getSprite().scale.x >= 0) {
-                    players[1].turnRight();
-                }
-                players[1].setMovingRight(true);
-                players[1].setLastKey(RIGHT);
-                break;
-    
-            // Fast Fall (unsupported)
-            case DOWN:
-                players[1].setLastKey(DOWN);
-                break;
-    
-            // Attack
-            case ATTACK:
-                players[1].setLastKey(ATTACK);
-                players[1].shoot(app);
-                break;
-    
-            // Sidestep/Shield
-            case SIDESTEP:
-                players[1].setLastKey(SIDESTEP);
-                if (players[1].isMoving()) {
-                    players[1].sidestep();
-                } else if (players[1].getCharacter().isGrounded()) {
-                    players[1].useShield();
-                    app.stage.addChild(players[1].getShield());
-                }
-            }    
-    
-        }, false);
-    
-        window.addEventListener("keyup", (e) => {
-            var LEFT = players[1].getLeftKey();
-            var UP = players[1].getUpKey();
-            var RIGHT = players[1].getRightKey();
-            var DOWN = players[1].getDownKey();
-            var ATTACK = players[1].getAttackKey();
-            var SIDESTEP = players[1].getSidestepKey();
-
-            switch (e.keyCode) {
-            
-                // Left Movement
-                case LEFT:
-                    players[1].setLeftMult(0);
-                    players[1].setMovingLeft(false);
-                    players[1].setLastKey(0);
-                    break;
-    
-                // Jump
-                case UP:
-                    players[1].setLastKey(0);
-                    break;
-    
-                // Right Movement
-                case RIGHT:
-                    players[1].setRightMult(0);
-                    players[1].setMovingRight(false);
-                    players[1].setLastKey(0);
-                    break;
-    
-                // Fast Fall (unsupported)
-                case DOWN:
-                    players[1].setDownMult(0);
-                    players[1].setLastKey(0);
-                    break;
-    
-                // Attack
-                case ATTACK:
-                    players[1].setLastKey(0);
-                    break;
-    
-                // Sidestep/Shield
-                case SIDESTEP:
-                    if (players[1].isShieldUp()) {
-                        players[1].dropShield();
-                        app.stage.removeChild(players[1].getShield());
-                    }
-                    players[1].setLastKey(0);
-                    break;
-                }
-    
-        }, false);
+        window.addEventListener("keyup", p2Movement);
 
         app.ticker.add((delta) => {
             for (var i = 0; i < 4; i ++) {
