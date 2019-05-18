@@ -5,7 +5,7 @@
 // Temporary array of players before choosing number of players is supported
 const players = [new Player(1), new Player(2)];
 
-class CharacterSelect{
+class CharacterSelect {
 
     constructor(game, app, playerNum) {
 

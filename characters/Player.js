@@ -28,6 +28,29 @@ class Player {
 
         var damage = 0;
 
+        var shieldUp = false;
+        var shield;
+
+        var movingLeft = false;
+        var movingRight = false;
+
+        switch (number) {
+        case 1:
+            shield = new PIXI.Sprite.from("images/combat/Red_Shield.png");
+            break;
+        case 2:
+            shield = new PIXI.Sprite.from("images/combat/Blue_Shield.png");
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        }
+
+        shield.scale.x = 0.2;
+        shield.scale.y = 0.2;
+        shield.alpha = 0.6;
+
         this.getName = function() {
             return name;
         }
@@ -214,6 +237,18 @@ class Player {
             return damage;
         }
 
+        this.setMovingLeft = function(boolean) {
+            movingLeft = boolean;
+        }
+
+        this.setMovingRight = function(boolean) {
+            movingRight = boolean;
+        }
+
+        this.isMoving = function() {
+            return (movingLeft || movingRight);
+        }
+
         this.hitRight = function() {
             character.getSprite().x += 30 + (damage * 5);
             damage += 2;
@@ -224,12 +259,67 @@ class Player {
             damage += 2;
         }
 
-        this.sideStepLeft = function() {
-            character.getSprite().x -= 30;
+        this.isShieldUp = function() {
+            return shieldUp;
         }
 
-        this.sideStepRight = function() {
-            character.getSprite().x += 30;
+        this.getShield = function() {
+            return shield;
+        }
+
+        this.sidestep = function() {
+            if (character.facingLeft()) {
+                character.getSprite().x -= 30;
+            } else {
+                character.getSprite().x += 30;
+            }
+        }
+
+        this.useShield = function() {
+            if (!shieldUp) {
+                shieldUp = true;
+
+                shield.y = character.getSprite().y;
+                var leftMod;
+
+                if (character.facingLeft()) {
+                    leftMod = -1;
+                    if (shield.scale.x < 0) {
+                        shield.scale.x *= -1;
+                    }
+                } else {
+                    leftMod = 1;
+                    if (shield.scale.x >= 0) {
+                        shield.scale.x *= -1;
+                    }
+                }
+
+                switch (character.getName()) {
+                case "Alfyn":
+                    shield.x = character.getSprite().x + (leftMod * 15);
+                    shield.y += 2;
+                    break;
+                case "Cyrus":
+                    shield.x = character.getSprite().x + (leftMod * 2);
+                    break;
+                case "H'annit":
+                    break;
+                case "Olberic":
+                    shield.x = character.getSprite().x + (leftMod * 3);
+                    shield.y -= 1;
+                    break;
+                case "Therion":
+                    shield.x = character.getSprite().x + (leftMod * 8);
+                    break;
+                default:
+                    shield.x = character.getSprite().x + (leftMod * 12);
+                    break;
+                }
+            }
+        }
+
+        this.dropShield = function() {
+            shieldUp = false;
         }
 
     }

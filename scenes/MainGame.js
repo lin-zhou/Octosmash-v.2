@@ -38,6 +38,7 @@ class MainGame {
                 if (players[0].getCharacter().getSprite().scale.x < 0) {
                     players[0].turnLeft();
                 }
+                players[0].setMovingLeft(true);
                 players[0].setLastKey(LEFT);
                 break;
 
@@ -53,6 +54,7 @@ class MainGame {
                 if (players[0].getCharacter().getSprite().scale.x >= 0) {
                     players[0].turnRight();
                 }
+                players[0].setMovingRight(true);
                 players[0].setLastKey(RIGHT);
                 break;
 
@@ -69,6 +71,13 @@ class MainGame {
 
             // Sidestep/Shield
             case SIDESTEP:
+                players[0].setLastKey(SIDESTEP);
+                if (players[0].isMoving()) {
+                    players[0].sidestep();
+                } else if (players[0].getCharacter().isGrounded()) {
+                    players[0].useShield();
+                    app.stage.addChild(players[0].getShield());
+                }
                 break;
             }
 
@@ -87,6 +96,7 @@ class MainGame {
             // Left Movement
             case LEFT:
                 players[0].setLeftMult(0);
+                players[0].setMovingLeft(false);
                 players[0].setLastKey(0);
                 break;
     
@@ -98,6 +108,7 @@ class MainGame {
             // Right Movement
             case RIGHT:
                 players[0].setRightMult(0);
+                players[0].setMovingRight(false);
                 players[0].setLastKey(0);
                 break;
     
@@ -114,6 +125,10 @@ class MainGame {
     
             // Sidestep/Shield
             case SIDESTEP:
+                if (players[0].isShieldUp()) {
+                    players[0].dropShield();
+                    app.stage.removeChild(players[0].getShield());
+                }
                 players[0].setLastKey(0);
                 break;
             }
@@ -137,6 +152,7 @@ class MainGame {
                 if (players[1].getCharacter().getSprite().scale.x < 0) {
                     players[1].turnLeft();
                 }
+                players[1].setMovingLeft(true);
                 players[1].setLastKey(LEFT);
                 break;
     
@@ -152,6 +168,7 @@ class MainGame {
                 if (players[1].getCharacter().getSprite().scale.x >= 0) {
                     players[1].turnRight();
                 }
+                players[1].setMovingRight(true);
                 players[1].setLastKey(RIGHT);
                 break;
     
@@ -186,6 +203,7 @@ class MainGame {
                 // Left Movement
                 case LEFT:
                     players[1].setLeftMult(0);
+                    players[1].setMovingLeft(false);
                     players[1].setLastKey(0);
                     break;
     
@@ -197,6 +215,7 @@ class MainGame {
                 // Right Movement
                 case RIGHT:
                     players[1].setRightMult(0);
+                    players[1].setMovingRight(false);
                     players[1].setLastKey(0);
                     break;
     
@@ -248,6 +267,11 @@ class MainGame {
                 for (var j = 0; j < players.length; j++) {
                     players[j].getCharacter().getSprite().x += (players[j].getLeftMult() + players[j].getRightMult()) * speed;
                     players[j].getCharacter().getSprite().y += players[j].getVel();
+                    if (players[j].isMoving() || ! players[j].getCharacter().isGrounded()) {
+                        if (players[j].isShieldUp()) {
+                            app.stage.removeChild(players[j].getShield());
+                        }
+                    }
                     if (players[j].getCharacter().isGrounded()) {
                         players[j].setVel(0);
                         players[j].setJumpCount(0);
