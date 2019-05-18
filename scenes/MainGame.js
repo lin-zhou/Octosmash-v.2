@@ -51,7 +51,7 @@ class MainGame {
     
         window.addEventListener("keyup", p2Movement);
 
-        app.ticker.add((delta) => {
+        function update(delta) {
             for (var i = 0; i < 4; i ++) {
                 
                 // TEST GAME OVER
@@ -156,8 +156,9 @@ class MainGame {
                     }
                 }
             }
+        }
 
-        }, false);
+        app.ticker.add(update, this);
 
         this.deleteScene = function() {
             // Note: Remove event listeners
@@ -169,6 +170,11 @@ class MainGame {
             app.stage.removeChild(gameOverMessage);
             app.stage.removeChild(playAgain);
             app.stage.removeChild(orRefresh);
+            app.ticker.remove(update, this);
+            window.removeEventListener("keydown", p1Movement);
+            window.removeEventListener("keyup", p1Movement);
+            window.removeEventListener("keydown", p2Movement);
+            window.removeEventListener("keyup", p2Movement);
         }
 
     }
