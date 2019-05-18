@@ -116,6 +116,18 @@ class Player {
         this.reset = function() {
             character.getSprite().x = startX;
             character.getSprite().y = startY;
+            switch (number) {
+            case 1:
+                if (character.getSprite().scale.x >= 0) {
+                    character.getSprite().scale.x *= -1;
+                }
+                break;
+            case 2:
+                if (character.getSprite().scale.x < 0) {
+                    character.getSprite().scale.x *= -1;
+                }
+                break;
+            }
             damage = 0;
         }
 
