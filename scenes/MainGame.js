@@ -185,7 +185,13 @@ class MainGame {
     
             // Sidestep/Shield
             case SIDESTEP:
-                break;
+                players[1].setLastKey(SIDESTEP);
+                if (players[1].isMoving()) {
+                    players[1].sidestep();
+                } else if (players[1].getCharacter().isGrounded()) {
+                    players[1].useShield();
+                    app.stage.addChild(players[1].getShield());
+                }
             }    
     
         }, false);
@@ -232,6 +238,10 @@ class MainGame {
     
                 // Sidestep/Shield
                 case SIDESTEP:
+                    if (players[1].isShieldUp()) {
+                        players[1].dropShield();
+                        app.stage.removeChild(players[1].getShield());
+                    }
                     players[1].setLastKey(0);
                     break;
                 }

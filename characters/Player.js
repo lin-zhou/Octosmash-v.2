@@ -28,6 +28,8 @@ class Player {
 
         var damage = 0;
 
+        var canSidestep = true;
+
         var shieldUp = false;
         var shield;
 
@@ -268,10 +270,16 @@ class Player {
         }
 
         this.sidestep = function() {
-            if (character.facingLeft()) {
-                character.getSprite().x -= 30;
-            } else {
-                character.getSprite().x += 30;
+            if (canSidestep) {
+                canSidestep = false;
+                if (character.facingLeft()) {
+                    character.getSprite().x -= 30;
+                } else {
+                    character.getSprite().x += 30;
+                }
+                setTimeout(function () {
+                    canSidestep = true;
+                }, 250)
             }
         }
 
