@@ -353,6 +353,8 @@ class CharacterSelect {
 
             app.stage.removeChild(nextButton);
 
+            app.stage.removeChild(chooseText);
+
         }
         
     }

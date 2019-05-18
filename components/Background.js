@@ -1,11 +1,3 @@
-const SceneEnum = Object.freeze({
-    START: "Start",
-    HOWTO: "How To",
-    CHARASELECT: "Character Select",
-    BATTLEFIELD: "Battlefield",
-    RECAP: "Recap"
-})
-
 class Background {
 
     constructor() {
@@ -39,7 +31,8 @@ class Background {
                     sprite.scale.y = 0.85;
                     break;
                 case SceneEnum.RECAP:
-                    throw "Currently not supported";
+                    // Currently not supported, just for testing
+                    sprite = new PIXI.Sprite;
             }
     
         }

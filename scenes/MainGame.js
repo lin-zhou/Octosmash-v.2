@@ -6,8 +6,12 @@ class MainGame {
         // var scene = scene;
 
         var players = players;
+        for (var i = 0; i < players.length; i++) {
+            players[i].reset();
+        }
+        var refreshed = false;
         var gameOver = false;
-        var winner;
+        var winner = null;
         var gameOverMessage;
         var damageDisplays = new DamageDisplays(app, players);
 
@@ -270,6 +274,24 @@ class MainGame {
                     }
                 }
 
+                // HANDLE GAME OVER
+                if (gameOver) {
+                    if (!refreshed) {
+                        app.stage.addChild(playAgain);
+                        app.stage.addChild(orRefresh);
+                    }
+
+                    window.addEventListener("keydown", (e) => {
+                        const REPLAY = 13;
+                        if (!refreshed && e.keyCode == REPLAY) {
+                            refreshed = true;
+                            game.handleScene(SceneEnum.BATTLEFIELD, SceneEnum.BATTLEFIELD);
+                            mainGame = new MainGame(game, app, players);
+                        }
+                    })
+
+                }
+
                 // UPDATE DAMAGE DISPLAY
                 damageDisplays.updateDamageAmt(app, players);
 
@@ -338,6 +360,18 @@ class MainGame {
 
         }, false);
 
+        this.deleteScene = function() {
+            // Note: Remove event listeners
+            for (var i = 0; i < players.length; i++) {
+                app.stage.removeChild(players[i].getCharacter().getSprite());
+            }
+            damageDisplays.remove(app);
+            app.stage.removeChild(gameMessage);
+            app.stage.removeChild(gameOverMessage);
+            app.stage.removeChild(playAgain);
+            app.stage.removeChild(orRefresh);
+        }
+
     }
 
 }
@@ -345,3 +379,11 @@ class MainGame {
 const gameMessage = new PIXI.Text("GAME!", gameTextStyle);
 gameMessage.x = 278;
 gameMessage.y = 180;
+
+const playAgain = new PIXI.Text("Press ENTER to play again", playAgainStyle);
+playAgain.x = 327;
+playAgain.y = 330;
+
+const orRefresh = new PIXI.Text("or refresh to choose new characters", playAgainStyle);
+orRefresh.x = 293;
+orRefresh.y = 350;

@@ -46,8 +46,11 @@ class DamageDisplays {
             }
         }
 
-        this.delete = function() {
-        
+        this.remove = function(app) {
+            for (var i = 0; i < damageDisplayNames.length; i++) {
+                app.stage.removeChild(damageDisplayNames[i]);
+                app.stage.removeChild(damageDisplays[i]);
+            }
         }
 
     }

@@ -53,6 +53,7 @@ class Game {
                     charaSelect.deleteScene();
                     break;
                 case SceneEnum.BATTLEFIELD:
+                    mainGame.deleteScene();
                     break;
                 case SceneEnum.RECAP:
                     throw "Currently not supported";

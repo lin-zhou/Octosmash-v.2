@@ -113,6 +113,12 @@ class Player {
                 }
         }
 
+        this.reset = function() {
+            character.getSprite().x = startX;
+            character.getSprite().y = startY;
+            damage = 0;
+        }
+
         this.getStartX = function() {
             return startX;
         }
