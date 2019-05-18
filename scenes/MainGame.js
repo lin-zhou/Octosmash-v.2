@@ -51,6 +51,7 @@ class MainGame {
     
         window.addEventListener("keyup", p2Movement);
 
+        // TICKER FUNCTION
         function update(delta) {
             for (var i = 0; i < 4; i ++) {
                 

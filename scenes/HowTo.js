@@ -4,17 +4,15 @@ class HowTo {
 
         console.log("How to Play Screen");
 
-        var selecting = false;
+        function handleStart(e) {
+            startFromHT(game, app, e.keyCode);
+        }
 
-        window.addEventListener("keydown", (e) => {
-            const START = 32;
-            if (!selecting && e.keyCode === START) {
-                selecting = true;
-                game.handleScene(SceneEnum.HOWTO, SceneEnum.CHARASELECT);
-                charaSelect = new CharacterSelect(game, app, 1);
-                // Note to self for future: Remove event listener
-            }
-        }, false);
+        window.addEventListener("keydown", handleStart);
+
+        this.deleteScene = function() {
+            window.removeEventListener("keydown", handleStart);
+        }
 
     }
 

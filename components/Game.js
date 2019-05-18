@@ -47,7 +47,7 @@ class Game {
                     start.deleteScene();
                     break;
                 case SceneEnum.HOWTO:
-                    // Nothing additional to get rid of.
+                    howTo.deleteScene();
                     break;
                 case SceneEnum.CHARASELECT:
                     charaSelect.deleteScene();

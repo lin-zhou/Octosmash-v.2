@@ -108,3 +108,12 @@ function stopMove(app, player, keyCode) {
             break;
         }
 }
+
+function startFromHT(game, app, keyCode) {
+    const START = 32;
+    if (keyCode === START) {
+        selecting = true;
+        game.handleScene(SceneEnum.HOWTO, SceneEnum.CHARASELECT);
+        charaSelect = new CharacterSelect(game, app, 1);
+    }
+}
