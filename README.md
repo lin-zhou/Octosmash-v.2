@@ -1,5 +1,5 @@
 # OCTOSMASH VERSION 2
-#### Current Version: 2.0.0
+#### Current Version: 2.0.1
 Octosmash is a multiplayer fighting game inspired by the Super Smash Bros series using characters from Square Enix's Octopath Traveler. This version is a revamp of Octosmash 110, which was originally created in Fall 2018 for Hack 110, a hackathon hosted by UNC-Chapel Hill's COMP 110: Introduction to Programming class.
 
 A link to play the revamped version will be available here once the project is completed.
@@ -21,6 +21,10 @@ The repository for Octosmash 110 can be found [here](https://github.com/lin-zhou
 
 ### New Features
 This section will be updated as new features are implemented.
+
+### Debugging & Fixes
+* Fixed lag when replaying the main game.
+* Fixed issue with not being able to jump after walking off stage.
 
 ## Installation
 Octosmash utilizes the [PixiJS library](http://www.pixijs.com).
