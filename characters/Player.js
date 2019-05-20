@@ -1,3 +1,6 @@
+// To be renamed to "players" after implementation is done
+var playersList;
+
 class Player {
 
     constructor(number) {
