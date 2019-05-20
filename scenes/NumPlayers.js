@@ -15,9 +15,9 @@ class NumPlayers {
         app.stage.addChild(howManyText);
 
         var twoPButton = new PIXI.Sprite.from(twoPTexture);
-        twoPButton.scale.x = 1.6;
+        twoPButton.scale.x = 1.4;
         twoPButton.scale.y = 1.2;
-        twoPButton.x = 170;
+        twoPButton.x = 180;
         twoPButton.y = 120;
         twoPButton.interactive = true;
         twoPButton.buttonMode = true;
@@ -31,9 +31,9 @@ class NumPlayers {
         app.stage.addChild(twoPButton);
 
         var threePButton = new PIXI.Sprite.from(threePTexture);
-        threePButton.scale.x = 1.6;
+        threePButton.scale.x = 1.4;
         threePButton.scale.y = 1.2;
-        threePButton.x = 370;
+        threePButton.x = 380;
         threePButton.y = 120;
         threePButton.interactive = true;
         threePButton.buttonMode = true;
@@ -48,9 +48,9 @@ class NumPlayers {
 
 
         var fourPButton = new PIXI.Sprite.from(fourPTexture);
-        fourPButton.scale.x = 1.6;
+        fourPButton.scale.x = 1.4;
         fourPButton.scale.y = 1.2;
-        fourPButton.x = 570;
+        fourPButton.x = 580;
         fourPButton.y = 120;
         fourPButton.interactive = true;
         fourPButton.buttonMode = true;
@@ -98,30 +98,66 @@ class NumPlayers {
                 break;
             }
 
-            for (var i = 0; i < numPlayerButtons.length; i++) {
-                if (numPlayerButtons[i] != this) {
-                    switch (numPlayerButtons[i]) {
-                        case twoPButton:
-                            numPlayerButtons[i].texture = twoPTexture;
-                            break;
-                        case threePButton:
-                            numPlayerButtons[i].texture = threePTexture;
-                            break;
-                        case fourPButton:
-                            numPlayerButtons[i].texture = fourPTexture;
-                            break;
-                    }
-                }
-            }
-
         }
         
         function buttonUp() {
             this.isdown = false;
             if (this.isOver) {
-                // Stuff
+                switch (this) {
+                case twoPButton:
+                    num = 2;
+                    if (this.texture != twoPTextureSelected) {
+                        this.texture = twoPTextureHover;
+                    }
+                    break;
+                case threePButton:
+                    num = 3;
+                    if (this.texture != threePTextureSelected) {
+                        this.texture = threePTextureHover;
+                    }
+                    break;
+                case fourPButton:
+                    num = 4;
+                    if (this.texture != fourPTextureSelected) {
+                        this.texture = fourPTextureHover;
+                    }
+                    break;
+                }
+
+                for (var i = 0; i < numPlayerButtons.length; i++) {
+                    if (numPlayerButtons[i] != this) {
+                        switch (numPlayerButtons[i]) {
+                            case twoPButton:
+                                numPlayerButtons[i].texture = twoPTexture;
+                                break;
+                            case threePButton:
+                                numPlayerButtons[i].texture = threePTexture;
+                                break;
+                            case fourPButton:
+                                numPlayerButtons[i].texture = fourPTexture;
+                                break;
+                        }
+                    }
+                }
+
             } else {
-                // Stuff
+                switch (this) {
+                case twoPButton:
+                    if (num != 2) {
+                        this.texture = twoPTexture;
+                    }
+                    break;
+                case threePButton:
+                    if (num != 3) {
+                        this.texture = threePTexture;
+                    }
+                    break;
+                case fourPButton:
+                    if (num != 4) {
+                        this.texture = fourPTexture;
+                    }
+                    break;
+                }
             }
         }
         
@@ -130,7 +166,23 @@ class NumPlayers {
             if (this.isdown) {
                 return;
             }
-            // Some stuff
+            switch (this) {
+            case twoPButton:
+                if (this.texture != twoPTextureSelected) {
+                    this.texture = twoPTextureHover;
+                }
+                break;
+            case threePButton:
+                if (this.texture != threePTextureSelected) {
+                    this.texture = threePTextureHover;
+                }
+                break;
+            case fourPButton:
+                if (this.texture != fourPTextureSelected) {
+                    this.texture = fourPTextureHover;
+                }
+                break;
+            }
         }
         
         function buttonOut() {
@@ -138,7 +190,23 @@ class NumPlayers {
             if (this.isdown) {
                 return;
             }
-            // Some stuff
+            switch (this) {
+            case twoPButton:
+                if (this.texture != twoPTextureSelected) {
+                    this.texture = twoPTexture;
+                }
+                break;
+            case threePButton:
+                if (this.texture != threePTextureSelected) {
+                    this.texture = threePTexture;
+                }
+                break;
+            case fourPButton:
+                if (this.texture != fourPTextureSelected) {
+                    this.texture = fourPTexture;
+                }
+                break;
+            }
         } 
 
         function onButtonDown() {
