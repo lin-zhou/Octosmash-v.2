@@ -1,4 +1,3 @@
-// To be renamed to "players" after implementation is done
 var players;
 
 class Player {
@@ -10,6 +9,7 @@ class Player {
         var character;
         var startX;
         var startY = 205;
+        var startOrientation;
 
         var left;
         var up;
@@ -81,15 +81,11 @@ class Player {
 
         this.updateCharacterDetails = function() {
             switch (number) {
+                
+                // Player 1
                 case 1:
 
-                    startX = 206 + character.getXMod();
-                    if (character.getSprite().scale.x >= 0) {
-                        character.getSprite().scale.x *= -1;
-                    }
-                    character.getSprite().x = startX;
-                    character.getSprite().y = startY;
-
+                    // Default player controls
                     left = 65;
                     up = 87;
                     right = 68;
@@ -97,15 +93,21 @@ class Player {
                     attack = 51;
                     sidestep = 82;
 
-                    break;
+                    // Assigns starting positions
+                    startX = 206 + character.getXMod();
+                    
+                    startOrientation = -1;
 
-                case 2:
-
-                    character.setXMod(-(character.getXMod()));
-                    startX = 655 + character.getXMod();
                     character.getSprite().x = startX;
                     character.getSprite().y = startY;
+                    this.setOrientation();
 
+                    break;
+
+                // Player 2
+                case 2:
+
+                    // Default player controls
                     left = 37;
                     up = 38;
                     right = 39;
@@ -113,26 +115,103 @@ class Player {
                     attack = 191;
                     sidestep = 188;
 
+                    // Assigns starting positions
+                    switch (players.length) {
+
+                    case 2:
+
+                        character.setXMod(-(character.getXMod()));
+                        startX = 655 + character.getXMod();
+
+                        startOrientation = 1;
+                        
+                        break;
+
+                    case 3:
+
+                        startX = 455 + character.getXMod();
+
+                        startOrientation = -1;
+
+                        break;
+
+                    case 4:
+
+                        startX = 370 + character.getXMod();
+
+                        startOrientation = -1;
+
+                        break;
+
+                    }
+
+                    character.getSprite().x = startX;
+                    character.getSprite().y = startY;
+                    this.setOrientation();
+
+                    break;
+
+                // Player 3
+                case 3:
+
+                    // Default player controls (to be set)
+
+                    // Assigns starting positions
+                    character.setXMod(-(character.getXMod()));
+                    switch (players.length) {
+
+                    case 3:
+
+                        startX = 655 + character.getXMod();
+
+                        break;
+
+                    case 4:
+
+                        startX = 505 + character.getXMod();
+
+                        break;
+
+                    }
+
+                    character.getSprite().x = startX;
+                    character.getSprite().y = startY;
+                    startOrientation = 1;
+                    this.setOrientation();
+
+                    break;
+
+                // Player 4
+                case 4:
+
+                    // Default player controls (to be set)
+
+                    // Assigns starting positions
+                    character.setXMod(-(character.getXMod()));
+                    startX = 655 + character.getXMod();
+
+                    startOrientation = 1;
+
+                    character.getSprite().x = startX;
+                    character.getSprite().y = startY;
+                    this.setOrientation();
+
                     break;
 
                 }
         }
 
+        this.setOrientation = function() {
+            if (startOrientation < 0 && character.getSprite().scale.x >= 0 ||
+                startOrientation >= 0 && character.getSprite().scale.x < 0) {
+                character.getSprite().scale.x *= -1;
+            }
+        }
+
         this.reset = function() {
             character.getSprite().x = startX;
             character.getSprite().y = startY;
-            switch (number) {
-            case 1:
-                if (character.getSprite().scale.x >= 0) {
-                    character.getSprite().scale.x *= -1;
-                }
-                break;
-            case 2:
-                if (character.getSprite().scale.x < 0) {
-                    character.getSprite().scale.x *= -1;
-                }
-                break;
-            }
+            this.setOrientation();
             damage = 0;
         }
 
