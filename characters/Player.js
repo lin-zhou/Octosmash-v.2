@@ -1,5 +1,5 @@
 // To be renamed to "players" after implementation is done
-var playersList;
+var players;
 
 class Player {
 
@@ -47,8 +47,10 @@ class Player {
             shield = new PIXI.Sprite.from("images/combat/Blue_Shield.png");
             break;
         case 3:
+            shield = new PIXI.Sprite.from("images/combat/Yellow_Shield.png");
             break;
         case 4:
+            shield = new PIXI.Sprite.from("images/combat/Green_Shield.png");
             break;
         }
 

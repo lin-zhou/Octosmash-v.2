@@ -65,14 +65,14 @@ class NumPlayers {
 
         var numPlayerButtons = [twoPButton, threePButton, fourPButton];
 
-        var startButton = new PIXI.Sprite(startTexture);  // Note to self: Create new PNG set for "CONTINUE" instead of "START"
+        var startButton = new PIXI.Sprite(startDownTexture);  // Note to self: Create new PNG set for "CONTINUE" instead of "START"
         startButton.scale.x = 0.3;
         startButton.scale.y = 0.3;
         startButton.x = 365;
         startButton.y = 413;
 
-        startButton.interactive = true;
-        startButton.buttonMode = true;
+        startButton.interactive = false;
+        startButton.buttonMode = false;
 
         startButton
             .on('pointerdown', onButtonDown)
@@ -139,6 +139,10 @@ class NumPlayers {
                         }
                     }
                 }
+
+                startButton.texture = startTexture;
+                startButton.interactive = true;
+                startButton.buttonMode = true;
 
             } else {
                 switch (this) {
@@ -217,9 +221,21 @@ class NumPlayers {
             startButton.x = 370;
             startButton.y = 415;
 
-            // game.handleScene(SceneEnum.HOWTO, SceneEnum.CHARASELECT);
+            switch (num) {
+            case 2:
+                players = [new Player(1), new Player(2)];
+                break;
+            case 3:
+                players = [new Player(1), new Player(2)];
+                break;
+            case 4:
+                players = [new Player(1), new Player(2), new Player(3), new Player(4)];
+                break;
+            }
+
+            game.handleScene(SceneEnum.NUMPLAYERS, SceneEnum.CHARASELECT);
             
-            // charaSelect = new CharacterSelect(game, app, 1);
+            charaSelect = new CharacterSelect(game, app, 1);
 
         }
         
@@ -267,7 +283,11 @@ class NumPlayers {
 
 
         this.deleteScene = function() {
-        
+            app.stage.removeChild(howManyText);
+            app.stage.removeChild(twoPButton);
+            app.stage.removeChild(threePButton);
+            app.stage.removeChild(fourPButton);
+            app.stage.removeChild(startButton);
         }
 
     }

@@ -2,9 +2,6 @@
 // choose1.x = 270;
 // choose1.y = 430;
 
-// Temporary array of players before choosing number of players is supported
-const players = [new Player(1), new Player(2)];
-
 class CharacterSelect {
 
     constructor(game, app, playerNum) {
