@@ -20,6 +20,9 @@ class Background {
                     sprite.scale.x = 0.655;
                     sprite.scale.y = 0.655;
                     break;
+                case SceneEnum.NUMPLAYERS:
+                    sprite = new PIXI.Sprite;   // Note to self: Choose a nicer background than blankness.
+                    break;
                 case SceneEnum.CHARASELECT:
                     sprite = new PIXI.Sprite.from("images/backgrounds/Character_Select.png");
                     sprite.scale.x = 0.452;
@@ -35,11 +38,6 @@ class Background {
                     sprite = new PIXI.Sprite;
             }
     
-        }
-
-        this.update = function(app) {
-            app.stage.removeChild(sprite);
-            setSprite(newSprite);
         }
 
     }

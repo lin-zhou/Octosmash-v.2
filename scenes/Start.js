@@ -31,9 +31,9 @@ class Start {
             startButton.x = 460;
             startButton.y = 388;
 
-            game.handleScene(SceneEnum.START, SceneEnum.HOWTO);
+            game.handleScene(SceneEnum.START, SceneEnum.NUMPLAYERS);
 
-            howTo = new HowTo(game, app);
+            numPlayers = new NumPlayers(game, app);
 
         }
         

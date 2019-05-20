@@ -49,6 +49,9 @@ class Game {
                 case SceneEnum.HOWTO:
                     howTo.deleteScene();
                     break;
+                case SceneEnum.NUMPLAYERS:
+                    numPlayers.deleteScene();
+                    break;
                 case SceneEnum.CHARASELECT:
                     charaSelect.deleteScene();
                     break;
