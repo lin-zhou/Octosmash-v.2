@@ -226,7 +226,7 @@ class NumPlayers {
                 players = [new Player(1), new Player(2)];
                 break;
             case 3:
-                players = [new Player(1), new Player(2)];
+                players = [new Player(1), new Player(2), new Player(3)];
                 break;
             case 4:
                 players = [new Player(1), new Player(2), new Player(3), new Player(4)];
