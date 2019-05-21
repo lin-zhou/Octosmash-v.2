@@ -51,11 +51,45 @@ class MainGame {
     
         window.addEventListener("keyup", p2Movement);
 
+        // ADDITIONAL PLAYER MOVEMENTS (if applicable)
+        switch (players.length) {
+
+        // PLAYER FOUR MOVEMENT
+        case 4:
+            function p4Movement(e) {
+                if (e.type == "keydown") {
+                    movement(app, players[3], e.keyCode);
+                } else if (e.type == "keyup") {
+                    stopMove(app, players[3], e.keyCode);
+                }
+            }
+            
+            window.addEventListener("keydown", p4Movement);
+        
+            window.addEventListener("keyup", p4Movement);
+
+        // PLAYER THREE MOVEMENT
+        case 3:
+            function p3Movement(e) {
+                if (e.type == "keydown") {
+                    movement(app, players[2], e.keyCode);
+                } else if (e.type == "keyup") {
+                    stopMove(app, players[2], e.keyCode);
+                }
+            }
+            
+            window.addEventListener("keydown", p3Movement);
+        
+            window.addEventListener("keyup", p3Movement);
+
+            break;
+        }
+
         // TICKER FUNCTION
         function update(delta) {
             for (var i = 0; i < 4; i ++) {
                 
-                // TEST GAME OVER
+                // TEST GAME OVER - ** Currently only works for two players **
                 for (var j = 0; j < players.length; j++) {
                     if (isOutOfBounds(players[j].getCharacter().getSprite())) {
                         if (!gameOver) {

@@ -155,6 +155,12 @@ class Player {
                 case 3:
 
                     // Default player controls (to be set)
+                    left = 70;
+                    up = 84;
+                    right = 72;
+                    down = 71;
+                    attack = 54;
+                    sidestep = 85;
 
                     // Assigns starting positions
                     character.setXMod(-(character.getXMod()));
@@ -185,6 +191,12 @@ class Player {
                 case 4:
 
                     // Default player controls (to be set)
+                    left = 74;
+                    up = 73;
+                    right = 76;
+                    down = 75;
+                    attack = 57;
+                    sidestep = 80;
 
                     // Assigns starting positions
                     character.setXMod(-(character.getXMod()));
