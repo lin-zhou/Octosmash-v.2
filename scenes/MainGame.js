@@ -97,7 +97,9 @@ class MainGame {
                     }
                 }
 
-                if (numOutOfBounds == 3) {
+                if ((players.length == 2 && numOutOfBounds == 1) ||
+                    (players.length == 3 && numOutOfBounds == 2) ||
+                    (players.length == 4 && numOutOfBounds == 3)) {
                     for (var j = 0; j < players.length; j++) {
                         if (!gameOver) {
                             if (!isOutOfBounds(players[j].getCharacter().getSprite())) {
