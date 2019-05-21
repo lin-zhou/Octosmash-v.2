@@ -13,6 +13,7 @@ class MainGame {
         var winner = null;
         var gameOverMessage;
         var damageDisplays = new DamageDisplays(app, players);
+        var numOutOfBounds = 0;
 
         // NUMBERS FOR MOTION
         const speed = 1.5;
@@ -88,24 +89,48 @@ class MainGame {
         function update(delta) {
             for (var i = 0; i < 4; i ++) {
                 
-                // TEST GAME OVER - ** Currently only works for two players **
+                // GAME OVER CONDITIONS
                 for (var j = 0; j < players.length; j++) {
-                    if (isOutOfBounds(players[j].getCharacter().getSprite())) {
+                    if (isOutOfBounds(players[j].getCharacter().getSprite()) && !players[j].isOut()) {
+                        players[j].knockedOut();
+                        numOutOfBounds++;
+                    }
+                }
+
+                if (numOutOfBounds == 3) {
+                    for (var j = 0; j < players.length; j++) {
                         if (!gameOver) {
-                            gameOver = true;
-                            if (!isOutOfBounds(players[0].getCharacter().getSprite())) {
-                                winner = players[0];
-                            } else if (!isOutOfBounds(players[1].getCharacter().getSprite())) {
-                                winner = players[1];
+                            if (!isOutOfBounds(players[j].getCharacter().getSprite())) {
+                                var testChars = notThisPlayer(players[j], players);
+                                if (allOut(testChars)) {
+                                    gameOver = true;
+                                    winner = players[j];
+                                    gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
+                                    gameOverMessage.x = 298;
+                                    gameOverMessage.y = 280;
+                                    app.stage.addChild(gameMessage);
+                                    app.stage.addChild(gameOverMessage);
+                                }
                             }
-                            gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
-                            gameOverMessage.x = 298;
-                            gameOverMessage.y = 280;
-                            app.stage.addChild(gameMessage);
-                            app.stage.addChild(gameOverMessage);
                         }
                     }
                 }
+
+                    // if (isOutOfBounds(players[j].getCharacter().getSprite())) {
+                    //     if (!gameOver) {
+                    //         gameOver = true;
+                    //         if (!isOutOfBounds(players[0].getCharacter().getSprite())) {
+                    //             winner = players[0];
+                    //         } else if (!isOutOfBounds(players[1].getCharacter().getSprite())) {
+                    //             winner = players[1];
+                    //         }
+                    //         gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
+                    //         gameOverMessage.x = 298;
+                    //         gameOverMessage.y = 280;
+                    //         app.stage.addChild(gameMessage);
+                    //         app.stage.addChild(gameOverMessage);
+                    //     }
+                    // }
 
                 // HANDLE GAME OVER
                 if (gameOver) {

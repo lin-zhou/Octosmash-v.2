@@ -11,3 +11,23 @@ function isColliding(a, b) {
     var bb = b.getBounds();
     return ab.x + ab.width > bb.x && ab.x < bb.x + bb.width && ab.y + ab.height > bb.y && ab.y < bb.y + bb.height;
 }
+
+function notThisPlayer(player, playerArr) {
+    var notThis = [];
+    for (var i = 0; i < playerArr.length; i++) {
+        if (playerArr[i] != player) {
+            notThis.push(playerArr[i]);
+        }
+    }
+    return notThis;
+}
+
+function allOut(playerArr) {
+    var allOut = true;
+    for (var i = 0; i < playerArr.length; i++) {
+        if (!isOutOfBounds(playerArr[i].getCharacter().getSprite())) {
+            allOut = false;
+        }
+    }
+    return allOut;
+}

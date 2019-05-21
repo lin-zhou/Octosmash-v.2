@@ -39,6 +39,8 @@ class Player {
         var movingLeft = false;
         var movingRight = false;
 
+        var out = false;
+
         switch (number) {
         case 1:
             shield = new PIXI.Sprite.from("images/combat/Red_Shield.png");
@@ -217,8 +219,8 @@ class Player {
         }
 
         this.setOrientation = function() {
-            if (startOrientation < 0 && character.getSprite().scale.x >= 0 ||
-                startOrientation >= 0 && character.getSprite().scale.x < 0) {
+            if ((startOrientation < 0 && character.getSprite().scale.x >= 0) ||
+                (startOrientation >= 0 && character.getSprite().scale.x < 0)) {
                 character.getSprite().scale.x *= -1;
             }
         }
@@ -453,6 +455,14 @@ class Player {
 
         this.dropShield = function() {
             shieldUp = false;
+        }
+
+        this.isOut = function() {
+            return out;
+        }
+
+        this.knockedOut = function() {
+            out = true;
         }
 
     }
