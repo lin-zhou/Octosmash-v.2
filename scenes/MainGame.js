@@ -1,11 +1,10 @@
 class MainGame {
 
-    constructor(game, app, players) {
+    constructor(game, app) {
 
         // Theoreticlaly, this scene variable could be used to choose different backgrounds
         // var scene = scene;
 
-        var players = players;
         for (var i = 0; i < players.length; i++) {
             players[i].reset();
         }
@@ -120,7 +119,7 @@ class MainGame {
                         if (!refreshed && e.keyCode == REPLAY) {
                             refreshed = true;
                             game.handleScene(SceneEnum.BATTLEFIELD, SceneEnum.BATTLEFIELD);
-                            mainGame = new MainGame(game, app, players);
+                            mainGame = new MainGame(game, app);
                         }
                     })
 
@@ -152,6 +151,8 @@ class MainGame {
                     if (players[j].getCharacter().isUnderStage()) {
                         players[j].resetLowY();
                     }
+
+                    // Magic Collisions
                     for (var k = 0; k < players[j].getMagicArr().length; k++) {
                         var kRemoved = false;
                         var magic = players[j].getMagicArr()[k];

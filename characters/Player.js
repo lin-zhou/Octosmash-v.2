@@ -373,12 +373,12 @@ class Player {
         }
 
         this.hitRight = function() {
-            character.getSprite().x += 30 + (damage * 5);
+            character.getSprite().x += 30 + (damage * 2);
             damage += 2;
         }
 
         this.hitLeft = function() {
-            character.getSprite().x -= 30 + (damage * 5);
+            character.getSprite().x -= 30 + (damage * 2);
             damage += 2;
         }
 
@@ -406,46 +406,49 @@ class Player {
 
         this.updateShield = function() {
 
-            if (!shieldUp) {
-                shieldUp = true;
+            shield.y = character.getSprite().y;
+            var leftMod;
 
-                shield.y = character.getSprite().y;
-                var leftMod;
-
-                if (character.facingLeft()) {
-                    leftMod = -1;
-                    if (shield.scale.x < 0) {
-                        shield.scale.x *= -1;
-                    }
-                } else {
-                    leftMod = 1;
-                    if (shield.scale.x >= 0) {
-                        shield.scale.x *= -1;
-                    }
+            if (character.facingLeft()) {
+                leftMod = -1;
+                if (shield.scale.x < 0) {
+                    shield.scale.x *= -1;
                 }
-
-                switch (character.getName()) {
-                case "Alfyn":
-                    shield.x = character.getSprite().x + (leftMod * 15);
-                    shield.y += 2;
-                    break;
-                case "Cyrus":
-                    shield.x = character.getSprite().x + (leftMod * 2);
-                    break;
-                case "H'annit":
-                    break;
-                case "Olberic":
-                    shield.x = character.getSprite().x + (leftMod * 3);
-                    shield.y -= 1;
-                    break;
-                case "Therion":
-                    shield.x = character.getSprite().x + (leftMod * 8);
-                    break;
-                default:
-                    shield.x = character.getSprite().x + (leftMod * 12);
-                    break;
+            } else {
+                leftMod = 1;
+                if (shield.scale.x >= 0) {
+                    shield.scale.x *= -1;
                 }
             }
+
+            switch (character.getName()) {
+            case "Alfyn":
+                shield.x = character.getSprite().x + (leftMod * 15);
+                shield.y += 2;
+                break;
+            case "Cyrus":
+                shield.x = character.getSprite().x + (leftMod * 2);
+                break;
+            case "H'annit":
+                shield.x = character.getSprite().x + (leftMod * 8);
+                shield.y -= 5;
+                break;
+            case "Olberic":
+                shield.x = character.getSprite().x + (leftMod * 3);
+                shield.y -= 1;
+                break;
+            case "Therion":
+                shield.x = character.getSprite().x + (leftMod * 8);
+                break;
+            default:
+                shield.x = character.getSprite().x + (leftMod * 12);
+                break;
+            }
+
+        }
+
+        this.raiseShield = function() {
+            shieldUp = true;
         }
 
         this.dropShield = function() {

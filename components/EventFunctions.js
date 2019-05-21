@@ -51,6 +51,7 @@ function movement(app, player, keyCode) {
         if (player.isMoving()) {
             player.sidestep();
         } else if (player.getCharacter().isGrounded()) {
+            player.raiseShield();
             player.updateShield();
             app.stage.addChild(player.getShield());
         }
