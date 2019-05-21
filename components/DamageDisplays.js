@@ -21,10 +21,14 @@ class DamageDisplays {
                 damageDisplays[i].x = displayXStored[i];
                 break;
             case 3:
-                // Spacing for three players
+                damageDisplayNames[i].x = 155 + (i * 223);
+                displayXStored[i] = 250 + (i * 223);
+                damageDisplays[i].x = displayXStored[i];
                 break;
             case 4:
-                // Spacing for four players
+                damageDisplayNames[i].x = 110 + (i * 175);
+                displayXStored[i] = 205 + (i * 175);
+                damageDisplays[i].x = displayXStored[i];
                 break;
             }
 

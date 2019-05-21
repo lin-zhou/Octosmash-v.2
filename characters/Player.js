@@ -406,8 +406,6 @@ class Player {
 
         this.updateShield = function() {
 
-            console.log(character.getName() + " is shielding at coordinates x: " + shield.x + " y: " + shield.y);
-
             if (!shieldUp) {
                 shieldUp = true;
 
