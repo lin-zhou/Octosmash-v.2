@@ -230,6 +230,7 @@ class Player {
             character.getSprite().y = startY;
             this.setOrientation();
             damage = 0;
+            out = false;
         }
 
         this.getStartX = function() {

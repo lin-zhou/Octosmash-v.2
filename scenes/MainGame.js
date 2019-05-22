@@ -11,7 +11,7 @@ class MainGame {
         var refreshed = false;
         var gameOver = false;
         var winner = null;
-        var gameOverMessage;
+        var gameOverMessage = null;
         var damageDisplays = new DamageDisplays(app, players);
         var numOutOfBounds = 0;
 
@@ -23,9 +23,7 @@ class MainGame {
             app.stage.addChild(players[i].getCharacter().getSprite());
         }
 
-        // Note: Maybe use a loop for all players
-
-        // PLAYER ONE MOVEMENT
+        // MOVEMENT FUNCTIONS
         function p1Movement(e) {
             if (e.type == "keydown") {
                 movement(app, players[0], e.keyCode);
@@ -33,12 +31,7 @@ class MainGame {
                 stopMove(app, players[0], e.keyCode);
             }
         }
-        
-        window.addEventListener("keydown", p1Movement);
 
-        window.addEventListener("keyup", p1Movement);
-
-        // PLAYER TWO MOVEMENT
         function p2Movement(e) {
             if (e.type == "keydown") {
                 movement(app, players[1], e.keyCode);
@@ -46,49 +39,60 @@ class MainGame {
                 stopMove(app, players[1], e.keyCode);
             }
         }
+
+        function p3Movement(e) {
+            if (e.type == "keydown") {
+                movement(app, players[2], e.keyCode);
+            } else if (e.type == "keyup") {
+                stopMove(app, players[2], e.keyCode);
+            }
+        }
+
+        function p4Movement(e) {
+            if (e.type == "keydown") {
+                movement(app, players[3], e.keyCode);
+            } else if (e.type == "keyup") {
+                stopMove(app, players[3], e.keyCode);
+            }
+        }
        
+        // MOVEMENT LISTENERS
+        window.addEventListener("keydown", p1Movement);
+        window.addEventListener("keyup", p1Movement);
+
         window.addEventListener("keydown", p2Movement);
-    
         window.addEventListener("keyup", p2Movement);
 
-        // ADDITIONAL PLAYER MOVEMENTS (if applicable)
         switch (players.length) {
 
         // PLAYER FOUR MOVEMENT
         case 4:
-            function p4Movement(e) {
-                if (e.type == "keydown") {
-                    movement(app, players[3], e.keyCode);
-                } else if (e.type == "keyup") {
-                    stopMove(app, players[3], e.keyCode);
-                }
-            }
             
             window.addEventListener("keydown", p4Movement);
-        
             window.addEventListener("keyup", p4Movement);
 
         // PLAYER THREE MOVEMENT
         case 3:
-            function p3Movement(e) {
-                if (e.type == "keydown") {
-                    movement(app, players[2], e.keyCode);
-                } else if (e.type == "keyup") {
-                    stopMove(app, players[2], e.keyCode);
-                }
-            }
             
             window.addEventListener("keydown", p3Movement);
-        
             window.addEventListener("keyup", p3Movement);
 
             break;
         }
 
+        function refresh(e) {
+            const REPLAY = 13;
+            if (!refreshed && e.keyCode == REPLAY) {
+                refreshed = true;
+                game.handleScene(SceneEnum.BATTLEFIELD, SceneEnum.BATTLEFIELD);
+                mainGame = new MainGame(game, app);
+            }
+        }
+
         // TICKER FUNCTION
         function update(delta) {
             for (var i = 0; i < 4; i ++) {
-                
+
                 // GAME OVER CONDITIONS
                 for (var j = 0; j < players.length; j++) {
                     if (isOutOfBounds(players[j].getCharacter().getSprite()) && !players[j].isOut()) {
@@ -97,42 +101,25 @@ class MainGame {
                     }
                 }
 
-                if ((players.length == 2 && numOutOfBounds == 1) ||
+                if (((players.length == 2 && numOutOfBounds == 1) ||
                     (players.length == 3 && numOutOfBounds == 2) ||
-                    (players.length == 4 && numOutOfBounds == 3)) {
+                    (players.length == 4 && numOutOfBounds == 3)) &&
+                    !gameOver) {
                     for (var j = 0; j < players.length; j++) {
-                        if (!gameOver) {
-                            if (!isOutOfBounds(players[j].getCharacter().getSprite())) {
-                                var testChars = notThisPlayer(players[j], players);
-                                if (allOut(testChars)) {
-                                    gameOver = true;
-                                    winner = players[j];
-                                    gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
-                                    gameOverMessage.x = 298;
-                                    gameOverMessage.y = 280;
-                                    app.stage.addChild(gameMessage);
-                                    app.stage.addChild(gameOverMessage);
-                                }
+                        if (!isOutOfBounds(players[j].getCharacter().getSprite())) {
+                            var testChars = notThisPlayer(players[j], players);
+                            if (allOut(testChars)) {
+                                gameOver = true;
+                                winner = players[j];
+                                gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
+                                gameOverMessage.x = 298;
+                                gameOverMessage.y = 280;
+                                app.stage.addChild(gameMessage);
+                                app.stage.addChild(gameOverMessage);
                             }
                         }
                     }
                 }
-
-                    // if (isOutOfBounds(players[j].getCharacter().getSprite())) {
-                    //     if (!gameOver) {
-                    //         gameOver = true;
-                    //         if (!isOutOfBounds(players[0].getCharacter().getSprite())) {
-                    //             winner = players[0];
-                    //         } else if (!isOutOfBounds(players[1].getCharacter().getSprite())) {
-                    //             winner = players[1];
-                    //         }
-                    //         gameOverMessage = new PIXI.Text("Player " + winner.getNumber() + " Wins", winnerStyle);
-                    //         gameOverMessage.x = 298;
-                    //         gameOverMessage.y = 280;
-                    //         app.stage.addChild(gameMessage);
-                    //         app.stage.addChild(gameOverMessage);
-                    //     }
-                    // }
 
                 // HANDLE GAME OVER
                 if (gameOver) {
@@ -141,14 +128,7 @@ class MainGame {
                         app.stage.addChild(orRefresh);
                     }
 
-                    window.addEventListener("keydown", (e) => {
-                        const REPLAY = 13;
-                        if (!refreshed && e.keyCode == REPLAY) {
-                            refreshed = true;
-                            game.handleScene(SceneEnum.BATTLEFIELD, SceneEnum.BATTLEFIELD);
-                            mainGame = new MainGame(game, app);
-                        }
-                    })
+                    window.addEventListener("keydown", refresh);
 
                 }
 
@@ -224,9 +204,11 @@ class MainGame {
         app.ticker.add(update, this);
 
         this.deleteScene = function() {
-            // Note: Remove event listeners
             for (var i = 0; i < players.length; i++) {
                 app.stage.removeChild(players[i].getCharacter().getSprite());
+            }
+            for (var i = 0; i < players.length; i++) {
+                players[i].reset();
             }
             damageDisplays.remove(app);
             app.stage.removeChild(gameMessage);
@@ -238,6 +220,19 @@ class MainGame {
             window.removeEventListener("keyup", p1Movement);
             window.removeEventListener("keydown", p2Movement);
             window.removeEventListener("keyup", p2Movement);
+
+            switch (players.length) {
+            case 4:
+                window.removeEventListener("keydown", p4Movement);
+                window.removeEventListener("keyup", p4Movement);
+            case 3:
+                window.removeEventListener("keydown", p3Movement);
+                window.removeEventListener("keyup", p3Movement);
+                break;
+            }
+
+            window.removeEventListener("keydown", refresh);
+
         }
 
     }
