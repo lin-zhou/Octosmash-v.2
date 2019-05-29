@@ -10,7 +10,7 @@ class NumPlayers {
         var howManyText = new PIXI.Text("How many players?", howManyStyle);
         var num;
 
-        howManyText.x = 300;
+        howManyText.x = 312;
         howManyText.y = 50;
         app.stage.addChild(howManyText);
 
@@ -18,7 +18,7 @@ class NumPlayers {
         twoPButton.scale.x = 1.4;
         twoPButton.scale.y = 1.2;
         twoPButton.x = 267;
-        twoPButton.y = 115;
+        twoPButton.y = 112;
         twoPButton.interactive = true;
         twoPButton.buttonMode = true;
 
@@ -34,7 +34,7 @@ class NumPlayers {
         threePButton.scale.x = 1.4;
         threePButton.scale.y = 1.2;
         threePButton.x = 267;
-        threePButton.y = 205;
+        threePButton.y = 202;
         threePButton.interactive = true;
         threePButton.buttonMode = true;
 
@@ -51,7 +51,7 @@ class NumPlayers {
         fourPButton.scale.x = 1.4;
         fourPButton.scale.y = 1.2;
         fourPButton.x = 267;
-        fourPButton.y = 295;
+        fourPButton.y = 292;
         fourPButton.interactive = true;
         fourPButton.buttonMode = true;
 

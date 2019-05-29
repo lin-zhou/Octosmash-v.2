@@ -1,10 +1,19 @@
 # SOURCES
-Links or credits for images
+Links or credits for images.
 
-## Characters
+## Start Screen
+* **Flaming Smash Ball:** [Insert credit here.]
+* **Octopath Characters:** [Insert credit here.]
+The Octopath silhouette was edited and imposed on the Smash ball using Photoshop.
 
-## Buttons
+## Number of Players Selection Screen
+* **Buttons:** *UI Button* by StumpyStrust on opengameart.org
 
-## Backgrounds
+## Character Selection Screen
+* **Background:** [Insert credit here.]
 
-## Misc
+## Battlefield (Main Game)
+* **Background:** [Insert credit here.]
+* **Character Sprites:** [Insert credit here.]
+
+## Other

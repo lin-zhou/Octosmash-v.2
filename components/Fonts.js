@@ -160,12 +160,12 @@ const playerDamageStyle = new PIXI.TextStyle({   // Used
 });
 
 const howManyStyle = new PIXI.TextStyle({   // Used
-    fontFamily: "Arial",
+    fontFamily: "Bookman",
     fontSize: 30,
     fontWeight: "bold",
-    fill: ["#000000", "#DE8526"], // gradient
-    stroke: "#ffffff",
-    strokeThickness: 5,
+    fill: ["#040302", "#DE8526"], // gradient
+    stroke: "#AC9F8E",
+    strokeThickness: 3,
     dropShadow: true,
     dropShadowColor: "#000000",
     dropShadowBlur: 4,
