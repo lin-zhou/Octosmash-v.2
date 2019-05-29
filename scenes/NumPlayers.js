@@ -7,7 +7,7 @@ class NumPlayers {
         console.log("Num Players Screen");
 
         // Note to self: Change font when you get the chance.
-        var howManyText = new PIXI.Text("How many players?", damageStyle);
+        var howManyText = new PIXI.Text("How many players?", howManyStyle);
         var num;
 
         howManyText.x = 300;
@@ -17,8 +17,8 @@ class NumPlayers {
         var twoPButton = new PIXI.Sprite.from(twoPTexture);
         twoPButton.scale.x = 1.4;
         twoPButton.scale.y = 1.2;
-        twoPButton.x = 180;
-        twoPButton.y = 120;
+        twoPButton.x = 267;
+        twoPButton.y = 115;
         twoPButton.interactive = true;
         twoPButton.buttonMode = true;
 
@@ -33,8 +33,8 @@ class NumPlayers {
         var threePButton = new PIXI.Sprite.from(threePTexture);
         threePButton.scale.x = 1.4;
         threePButton.scale.y = 1.2;
-        threePButton.x = 380;
-        threePButton.y = 120;
+        threePButton.x = 267;
+        threePButton.y = 205;
         threePButton.interactive = true;
         threePButton.buttonMode = true;
 
@@ -50,8 +50,8 @@ class NumPlayers {
         var fourPButton = new PIXI.Sprite.from(fourPTexture);
         fourPButton.scale.x = 1.4;
         fourPButton.scale.y = 1.2;
-        fourPButton.x = 580;
-        fourPButton.y = 120;
+        fourPButton.x = 267;
+        fourPButton.y = 295;
         fourPButton.interactive = true;
         fourPButton.buttonMode = true;
 
@@ -298,14 +298,14 @@ class NumPlayers {
 // const numButtonTextureHover = new PIXI.Texture.from("images/buttons/Num_Player_Button_Blank.png");
 // const numButtonTextureSelected = new PIXI.Texture.from("images/buttons/Num_Player_Button_Blank.png");
 
-const twoPTexture = new PIXI.Texture.from("images/buttons/Num_Player_Button_2.png");
-const twoPTextureHover = new PIXI.Texture.from("images/buttons/Num_Player_Button_2_Hover.png");
-const twoPTextureSelected = new PIXI.Texture.from("images/buttons/Num_Player_Button_2_Selected.png");
+const twoPTexture = new PIXI.Texture.from("images/buttons/Num_Button_2.png");
+const twoPTextureHover = new PIXI.Texture.from("images/buttons/Num_Button_Hover_2.png");
+const twoPTextureSelected = new PIXI.Texture.from("images/buttons/Num_Button_Selected_2.png");
 
-const threePTexture = new PIXI.Texture.from("images/buttons/Num_Player_Button_3.png");
-const threePTextureHover = new PIXI.Texture.from("images/buttons/Num_Player_Button_3_Hover.png");
-const threePTextureSelected = new PIXI.Texture.from("images/buttons/Num_Player_Button_3_Selected.png");
+const threePTexture = new PIXI.Texture.from("images/buttons/Num_Button_3.png");
+const threePTextureHover = new PIXI.Texture.from("images/buttons/Num_Button_Hover_3.png");
+const threePTextureSelected = new PIXI.Texture.from("images/buttons/Num_Button_Selected_3.png");
 
-const fourPTexture = new PIXI.Texture.from("images/buttons/Num_Player_Button_4.png");
-const fourPTextureHover = new PIXI.Texture.from("images/buttons/Num_Player_Button_4_Hover.png");
-const fourPTextureSelected = new PIXI.Texture.from("images/buttons/Num_Player_Button_4_Selected.png");
+const fourPTexture = new PIXI.Texture.from("images/buttons/Num_Button_4.png");
+const fourPTextureHover = new PIXI.Texture.from("images/buttons/Num_Button_Hover_4.png");
+const fourPTextureSelected = new PIXI.Texture.from("images/buttons/Num_Button_Selected_4.png");

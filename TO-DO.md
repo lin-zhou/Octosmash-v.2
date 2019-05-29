@@ -5,11 +5,9 @@ Some ideas for features to implement after I finish redoing the base game.
 Here are some things I should definitely do:
 * Make knockback smoother
 * Improve shielding system
+* Create a menu screen so that players can navigate the game dynamically
 
 ## Optional, likely to implement
-* Be able to replay the game without choosing characters again (and without that pesky lag from Octosmash 110)
-* Support more than two players
-* Create a menu screen so that players can navigate the game dynamically
 * Sound/music
 * Healing items
 * Multiple lives + respawning (and being able to choose number of stocks to play)
@@ -22,6 +20,7 @@ Here are some things I should definitely do:
 
 ## Aesthetic Cleaning
 Just because I want the game to look nice:
+* Nicer number of players selection screen
 * Render characters based on degree of forwardness so it looks perspectively accurate
 * Nicer title screen
 * Nicer fonts
