@@ -163,14 +163,9 @@ const howManyStyle = new PIXI.TextStyle({   // Used
     fontFamily: "Bookman",
     fontSize: 30,
     fontWeight: "bold",
-    fill: ["#040302", "#DE8526"], // gradient
-    stroke: "#AC9F8E",
-    strokeThickness: 3,
-    dropShadow: true,
-    dropShadowColor: "#000000",
-    dropShadowBlur: 4,
-    dropShadowAngle: Math.PI / 6,
-    dropShadowDistance: 6,
+    fill: ["#000000", "#7F3B00"], // gradient
+    stroke: "#D2B689",
+    strokeThickness: 2,
     wordWrap: true,
     wordWrapWidth: 440
 });

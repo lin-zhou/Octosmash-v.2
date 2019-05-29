@@ -8,7 +8,8 @@ Note: Currently not updated.
 The Octopath silhouette was edited and imposed on the Smash ball using Photoshop.
 
 ## Number of Players Selection Screen
-**Buttons:** Edited version of *UI Button* by StumpyStrust on opengameart.org
+**Background:** Base image from [getwallpapers.com]
+**Buttons:** Edited version of *UI Button* by StumpyStrust on [opengameart.org]
 
 ## Character Selection Screen
 **Background:** [Insert credit here.]
