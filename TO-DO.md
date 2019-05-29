@@ -3,14 +3,16 @@ Some ideas for features to implement after I finish redoing the base game.
 
 ## High Priority
 Here are some things I should definitely do:
+* ~~Be able to replay the game without choosing characters again (and without that pesky lag from Octosmash 110)~~
+* ~~Support more than two players~~
+* Create a menu screen so that players can navigate the game dynamically
 * Make knockback smoother
 * Improve shielding system
-* Create a menu screen so that players can navigate the game dynamically
 
 ## Optional, likely to implement
+* Multiple lives + respawning (and being able to choose number of stocks to play)
 * Sound/music
 * Healing items
-* Multiple lives + respawning (and being able to choose number of stocks to play)
 
  ## Optional, somewhat likely to implement
 * Different movement speeds and damage amount for different characters
