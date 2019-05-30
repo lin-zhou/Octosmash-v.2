@@ -163,8 +163,8 @@ const howManyStyle = new PIXI.TextStyle({   // Used
     fontFamily: "Bookman",
     fontSize: 30,
     fontWeight: "bold",
-    fill: ["#000000", "#7F3B00"], // gradient
-    stroke: "#D2B689",
+    fill: ["#000000", "#AA0000"], // gradient
+    stroke: "#E1BDBD",
     strokeThickness: 2,
     wordWrap: true,
     wordWrapWidth: 440

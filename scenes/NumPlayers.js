@@ -65,23 +65,23 @@ class NumPlayers {
 
         var numPlayerButtons = [twoPButton, threePButton, fourPButton];
 
-        var startButton = new PIXI.Sprite(startDownTexture);  // Note to self: Create new PNG set for "CONTINUE" instead of "START"
-        startButton.scale.x = 0.3;
-        startButton.scale.y = 0.3;
-        startButton.x = 365;
-        startButton.y = 413;
+        var continueButton = new PIXI.Sprite(continueInactiveTexture);
+        continueButton.scale.x = 0.35;
+        continueButton.scale.y = 0.35;
+        continueButton.x = 333;
+        continueButton.y = 413;
 
-        startButton.interactive = false;
-        startButton.buttonMode = false;
+        continueButton.interactive = false;
+        continueButton.buttonMode = false;
 
-        startButton
+        continueButton
             .on('pointerdown', onButtonDown)
             .on('pointerup', onButtonUp)
             .on('pointerupoutside', onButtonUp)
             .on('pointerover', onButtonHover)
             .on('pointerout', onButtonOut);
 
-        app.stage.addChild(startButton);
+        app.stage.addChild(continueButton);
 
         function buttonDown() {
             this.isdown = true;
@@ -140,9 +140,9 @@ class NumPlayers {
                     }
                 }
 
-                startButton.texture = startTexture;
-                startButton.interactive = true;
-                startButton.buttonMode = true;
+                continueButton.texture = continueTexture;
+                continueButton.interactive = true;
+                continueButton.buttonMode = true;
 
             } else {
                 switch (this) {
@@ -215,11 +215,11 @@ class NumPlayers {
 
         function onButtonDown() {
             this.isdown = true;
-            this.texture = startDownTexture;
-            startButton.scale.x = 0.28;
-            startButton.scale.y = 0.28;
-            startButton.x = 370;
-            startButton.y = 415;
+            this.texture = continueDownTexture;
+            continueButton.scale.x = 0.3;
+            continueButton.scale.y = 0.3;
+            continueButton.x = 348;
+            continueButton.y = 415;
 
             switch (num) {
             case 2:
@@ -234,7 +234,6 @@ class NumPlayers {
             }
 
             game.handleScene(SceneEnum.NUMPLAYERS, SceneEnum.CHARASELECT);
-            
             charaSelect = new CharacterSelect(game, app, 1);
 
         }
@@ -242,18 +241,18 @@ class NumPlayers {
         function onButtonUp() {
             this.isdown = false;
             if (this.isOver) {
-                this.texture = startHoverTexture;
-                startButton.scale.x = 0.33;
-                startButton.scale.y = 0.33;
-                startButton.x = 357;
-                startButton.y = 410;
+                this.texture = continueHoverTexture;
+                continueButton.scale.x = 0.38;
+                continueButton.scale.y = 0.38;
+                continueButton.x = 325;
+                continueButton.y = 410;
             }
             else {
-                this.texture = startTexture;
-                startButton.scale.x = 0.3;
-                startButton.scale.y = 0.3;
-                startButton.x = 365;
-                startButton.y = 413;
+                this.texture = continueTexture;
+                continueButton.scale.x = 0.35;
+                continueButton.scale.y = 0.35;
+                continueButton.x = 333;
+                continueButton.y = 413;
             }
         }
         
@@ -262,11 +261,11 @@ class NumPlayers {
             if (this.isdown) {
                 return;
             }
-            this.texture = startHoverTexture;
-            startButton.scale.x = 0.33;
-            startButton.scale.y = 0.33;
-            startButton.x = 357;
-            startButton.y = 410;
+            this.texture = continueHoverTexture;
+            continueButton.scale.x = 0.38;
+            continueButton.scale.y = 0.38;
+            continueButton.x = 325;
+            continueButton.y = 410;
         }
         
         function onButtonOut() {
@@ -274,11 +273,11 @@ class NumPlayers {
             if (this.isdown) {
                 return;
             }
-            this.texture = startTexture;
-            startButton.scale.x = 0.3;
-            startButton.scale.y = 0.3;
-            startButton.x = 365;
-            startButton.y = 413;
+            this.texture = continueTexture;
+            continueButton.scale.x = 0.35;
+            continueButton.scale.y = 0.35;
+            continueButton.x = 333;
+            continueButton.y = 413;
         }        
 
 
@@ -287,16 +286,17 @@ class NumPlayers {
             app.stage.removeChild(twoPButton);
             app.stage.removeChild(threePButton);
             app.stage.removeChild(fourPButton);
-            app.stage.removeChild(startButton);
+            app.stage.removeChild(continueButton);
         }
 
     }
 
 }
 
-// const numButtonTexture = new PIXI.Texture.from("images/buttons/Num_Player_Button_Blank.png");
-// const numButtonTextureHover = new PIXI.Texture.from("images/buttons/Num_Player_Button_Blank.png");
-// const numButtonTextureSelected = new PIXI.Texture.from("images/buttons/Num_Player_Button_Blank.png");
+const continueTexture = new PIXI.Texture.from("images/buttons/Continue_Button.png");
+const continueDownTexture = new PIXI.Texture.from("images/buttons/Continue_Button_Down.png");
+const continueHoverTexture = new PIXI.Texture.from("images/buttons/Continue_Button_Hover.png");
+const continueInactiveTexture = new PIXI.Texture.from("images/buttons/Continue_Button_Inactive.png");
 
 const twoPTexture = new PIXI.Texture.from("images/buttons/Num_Button_2.png");
 const twoPTextureHover = new PIXI.Texture.from("images/buttons/Num_Button_Hover_2.png");
