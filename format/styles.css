@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+    background-image: url("../../images/backgrounds/Octopath_Wallpaper.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto
+}
+
+h1 {
+    -webkit-text-stroke: 0.2px black;
+    background: linear-gradient(to right, #DE8526 45%, white 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

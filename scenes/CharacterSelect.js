@@ -21,7 +21,7 @@ class CharacterSelect {
         var blockBoxOphelia = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxOphelia.scale.x = 0.405;
         blockBoxOphelia.scale.y = 1.231;
-        blockBoxOphelia.x = 48;
+        blockBoxOphelia.x = 49;
         blockBoxOphelia.y = 125;
         blockBoxOphelia.alpha = 0;
         blockBoxOphelia.interactive = true;
@@ -38,7 +38,7 @@ class CharacterSelect {
         var blockBoxCyrus = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxCyrus.scale.x = 0.405;
         blockBoxCyrus.scale.y = 1.231;
-        blockBoxCyrus.x = 147;
+        blockBoxCyrus.x = 148;
         blockBoxCyrus.y = 125;
         blockBoxCyrus.alpha = 0;
         blockBoxCyrus.interactive = true;
@@ -55,7 +55,7 @@ class CharacterSelect {
         var blockBoxTressa = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxTressa.scale.x = 0.405;
         blockBoxTressa.scale.y = 1.231;
-        blockBoxTressa.x = 244;
+        blockBoxTressa.x = 246;
         blockBoxTressa.y = 125;
         blockBoxTressa.alpha = 0;
         blockBoxTressa.interactive = true;
@@ -72,7 +72,7 @@ class CharacterSelect {
         var blockBoxOlberic = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxOlberic.scale.x = 0.405;
         blockBoxOlberic.scale.y = 1.231;
-        blockBoxOlberic.x = 340;
+        blockBoxOlberic.x = 342;
         blockBoxOlberic.y = 125;
         blockBoxOlberic.alpha = 0;
         blockBoxOlberic.interactive = true;
@@ -89,7 +89,7 @@ class CharacterSelect {
         var blockBoxPrimrose = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxPrimrose.scale.x = 0.405;
         blockBoxPrimrose.scale.y = 1.231;
-        blockBoxPrimrose.x = 438;
+        blockBoxPrimrose.x = 440;
         blockBoxPrimrose.y = 125;
         blockBoxPrimrose.alpha = 0;
         blockBoxPrimrose.interactive = true;
@@ -106,7 +106,7 @@ class CharacterSelect {
         var blockBoxAlfyn = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxAlfyn.scale.x = 0.405;
         blockBoxAlfyn.scale.y = 1.231;
-        blockBoxAlfyn.x = 535;
+        blockBoxAlfyn.x = 537;
         blockBoxAlfyn.y = 125;
         blockBoxAlfyn.alpha = 0;
         blockBoxAlfyn.interactive = true;
@@ -123,7 +123,7 @@ class CharacterSelect {
         var blockBoxTherion = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxTherion.scale.x = 0.405;
         blockBoxTherion.scale.y = 1.231;
-        blockBoxTherion.x = 632;
+        blockBoxTherion.x = 634;
         blockBoxTherion.y = 125;
         blockBoxTherion.alpha = 0;
         blockBoxTherion.interactive = true;
@@ -140,7 +140,7 @@ class CharacterSelect {
         var blockBoxHannit = new PIXI.Sprite.from("images/buttons/Block_Box.png");
         blockBoxHannit.scale.x = 0.405;
         blockBoxHannit.scale.y = 1.231;
-        blockBoxHannit.x = 728;
+        blockBoxHannit.x = 731;
         blockBoxHannit.y = 125;
         blockBoxHannit.alpha = 0;
         blockBoxHannit.interactive = true;
@@ -159,7 +159,7 @@ class CharacterSelect {
 
         nextButton.scale.x = 0.3;
         nextButton.scale.y = 0.3;
-        nextButton.x = 688;
+        nextButton.x = 691;
         nextButton.y = 420;
 
         nextButton.interactive = false;
@@ -221,7 +221,7 @@ class CharacterSelect {
 
                 nextButton.scale.x = 0.185;
                 nextButton.scale.y = 0.185;
-                nextButton.x = 688;
+                nextButton.x = 691;
                 nextButton.y = 420;
 
                 nextButton.interactive = true;
@@ -277,7 +277,7 @@ class CharacterSelect {
                     this.texture = nextTexture;
                     nextButton.scale.x = 0.3;
                     nextButton.scale.y = 0.3;
-                    nextButton.x = 688;
+                    nextButton.x = 691;
                     nextButton.y = 420;
             
                     nextButton.interactive = false;
@@ -295,13 +295,13 @@ class CharacterSelect {
                 this.texture = activeNextHoverTexture;
                 nextButton.scale.x = 0.185;
                 nextButton.scale.y = 0.185;
-                nextButton.x = 688;
+                nextButton.x = 691;
                 nextButton.y = 420;
             } else {
                 this.texture = activeNextTexture;
                 nextButton.scale.x = 0.185;
                 nextButton.scale.y = 0.185;
-                nextButton.x = 688;
+                nextButton.x = 691;
                 nextButton.y = 420;
             }
         }
@@ -314,7 +314,7 @@ class CharacterSelect {
             this.texture = activeNextHoverTexture;
             nextButton.scale.x = 0.185;
             nextButton.scale.y = 0.185;
-            nextButton.x = 688;
+            nextButton.x = 691;
             nextButton.y = 420;
         }
         
@@ -326,7 +326,7 @@ class CharacterSelect {
             this.texture = activeNextTexture;
             nextButton.scale.x = 0.185;
             nextButton.scale.y = 0.185;
-            nextButton.x = 688;
+            nextButton.x = 691;
             nextButton.y = 420;
         } 
         
