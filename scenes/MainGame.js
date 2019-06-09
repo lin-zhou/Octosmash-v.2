@@ -97,6 +97,7 @@ class MainGame {
                 for (var j = 0; j < players.length; j++) {
                     if (isOutOfBounds(players[j].getCharacter().getSprite()) && !players[j].isOut()) {
                         players[j].knockedOut();
+                        app.stage.removeChild(players[j].getCharacter().getSprite());
                         numOutOfBounds++;
                     }
                 }
